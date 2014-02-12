@@ -7,7 +7,7 @@
 <body>
 	<div id="header">
 		<div class="t3h-logo">
-			<div class="logo1">V.B.'s corner</div>
+			<div class="logo1">VeeB's corner</div>
 			<div class="logo2">//web dev shenanigans</div>
 			<div class="black-magic" disabled>
 <pre>
@@ -43,6 +43,12 @@ float Q_rsqrt( float number )
 					<div class="stripe4"></div>
 					<div class="stripe5"></div>
 					<div class="stripe6"></div>
+					<!--
+					<div class="stripe7"></div>
+					<div class="stripe8"></div>
+					<div class="stripe9"></div>
+					<div class="stripe10"></div>
+					-->
 				</div>
 			</div>
 		</div>

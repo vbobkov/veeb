@@ -110,6 +110,14 @@ body {
 	-webkit-border-radius: 1em;
 	-moz-border-radius: 1em;
 	border-radius: 1em;
+
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	user-select: none;
 }
 
 .t3h-logo .logo1 {
@@ -172,7 +180,11 @@ body {
 .stripe3,
 .stripe4,
 .stripe5,
-.stripe6 {
+.stripe6,
+.stripe7,
+.stripe8,
+.stripe9,
+.stripe10 {
 	display: inline-block;
 	position: absolute;
 }
@@ -186,12 +198,12 @@ body {
 .stripe1 {
 	border-left: 1em solid rgba(224,224,224,0);
 	border-top: 1.5em solid rgba(224,224,224,0);
-	border-right: 1em solid rgba(224,224,224,0.5);
-	border-bottom: 1.5em solid rgba(224,224,224,0.5);
+	border-right: 1em solid rgba(224,224,224,0.3);
+	border-bottom: 1.5em solid rgba(224,224,224,0.3);
 }
 .stripe2 {
-	border-left: 1em solid rgba(224,224,224,0.5);
-	border-top: 1.5em solid rgba(224,224,224,0.5);
+	border-left: 1em solid rgba(224,224,224,0.3);
+	border-top: 1.5em solid rgba(224,224,224,0.3);
 	border-right: 1em solid rgba(224,224,224,0);
 	border-bottom: 1.5em solid rgba(224,224,224,0);
 	left: 2em;
@@ -199,13 +211,13 @@ body {
 .stripe3 {
 	border-left: 1em solid rgba(224,224,224,0);
 	border-top: 1.5em solid rgba(224,224,224,0);
-	border-right: 1em solid rgba(224,224,224,0.5);
-	border-bottom: 1.5em solid rgba(224,224,224,0.5);
+	border-right: 1em solid rgba(224,224,224,0.4);
+	border-bottom: 1.5em solid rgba(224,224,224,0.4);
 	left: 4em;
 }
 .stripe4 {
-	border-left: 1em solid rgba(224,224,224,0.5);
-	border-top: 1.5em solid rgba(224,224,224,0.5);
+	border-left: 1em solid rgba(224,224,224,0.4);
+	border-top: 1.5em solid rgba(224,224,224,0.4);
 	border-right: 1em solid rgba(224,224,224,0);
 	border-bottom: 1.5em solid rgba(224,224,224,0);
 	left: 6em;
@@ -224,6 +236,36 @@ body {
 	border-bottom: 1.5em solid rgba(224,224,224,0);
 	left: 10em;
 }
+/*
+.stripe7 {
+	border-left: 1em solid rgba(224,224,224,0);
+	border-top: 1.5em solid rgba(224,224,224,0);
+	border-right: 1em solid rgba(224,224,224,0.4);
+	border-bottom: 1.5em solid rgba(224,224,224,0.4);
+	left: 12em;
+}
+.stripe8 {
+	border-left: 1em solid rgba(224,224,224,0.4);
+	border-top: 1.5em solid rgba(224,224,224,0.4);
+	border-right: 1em solid rgba(224,224,224,0);
+	border-bottom: 1.5em solid rgba(224,224,224,0);
+	left: 14em;
+}
+.stripe9 {
+	border-left: 1em solid rgba(224,224,224,0);
+	border-top: 1.5em solid rgba(224,224,224,0);
+	border-right: 1em solid rgba(224,224,224,0.3);
+	border-bottom: 1.5em solid rgba(224,224,224,0.3);
+	left: 16em;
+}
+.stripe10 {
+	border-left: 1em solid rgba(224,224,224,0.3);
+	border-top: 1.5em solid rgba(224,224,224,0.3);
+	border-right: 1em solid rgba(224,224,224,0);
+	border-bottom: 1.5em solid rgba(224,224,224,0);
+	left: 18em;
+}
+*/
 
 
 
