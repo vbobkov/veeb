@@ -3,6 +3,12 @@
 * 2014-02-09
 */
 
+body {
+	margin: 0em;
+	padding: 0em;
+}
+
+/* menu */
 .menu-item {
 	display: inline-block;
 }
@@ -12,25 +18,17 @@
 	position: absolute;
 }
 
-.menu-item-list >.menu-item {
+.menu-item-list .menu-item {
 	display: block;
 }
 
-.menu >.menu-item {
-	position: static;
-}
-
-.menu-item:hover >.menu-item-list {
+.menu-item:hover > .menu-item-list {
 	display: inline-block;
 }
 
 
 
-body {
-	margin: 0em;
-	padding: 0em;
-}
-
+/* menu styling */
 .menu {
 	border: 0.25em ridge rgb(192,192,192);
 	border-top: none;
@@ -63,7 +61,7 @@ body {
 	color: rgb(0,255,0);
 }
 
-.menu >.menu-item:hover {
+.menu > .menu-item:hover {
 	background: rgba(128,128,128,0.25);
 	color: rgb(0,0,255);
 }
@@ -72,7 +70,7 @@ body {
 	border-color: rgba(192,192,192,1);
 }
 
-.menu >.menu-item,
+.menu > .menu-item,
 .menu-item-list .menu-item:last-child {
 	border-bottom: none;
 }
@@ -269,6 +267,7 @@ body {
 
 
 
+/* header, footer, container */
 #header,
 #footer {
 	position: fixed;
@@ -288,7 +287,6 @@ body {
 
 #footer {
 	bottom: 0em;
-	height: 2em;
 	left: 0em;
 	width: 100%;
 }
@@ -298,7 +296,8 @@ body {
 	border-bottom: none;
 	font-family: "Comic Sans MS", cursive, sans-serif;
 	overflow: hidden;
-	margin: 0.5em;
+	margin: 0em 0.5em;
+	padding-bottom: 0.25em;
 	text-align: center;
 
 	background: rgb(255,255,255); /* Old browsers */
@@ -313,4 +312,17 @@ body {
 	-webkit-border-radius: 1em 1em 0em 0em;
 	-moz-border-radius: 1em 1em 0em 0em;
 	border-radius: 1em 1em 0em 0em;
+}
+
+
+
+/* page styling */
+#container ul {
+	margin: 0em;
+	margin-bottom: 3em;
+	padding: 0em;
+}
+
+#container ul li {
+	margin-left: 4em;
 }

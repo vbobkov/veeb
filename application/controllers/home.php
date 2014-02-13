@@ -13,17 +13,8 @@ class Home extends MY_Controller {
 		echo filemtime('.git/index');
 	}
 
-
-
 	public function index() {
-		$get_string = $this->input->get();
-		if($this->input->get() == null) {
-			$get_string = "";
-		}
-		else {
-			$get_string = http_build_query($this->input->get());
-		}
-		$this->render('home', array('params' => $get_string));
+		$this->render('home');
 	}
 }
 

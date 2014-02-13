@@ -32,18 +32,23 @@ class MY_Controller extends CI_Controller {
 						)
 					)
 				),
-				'lightning animation (JQuery + CSS)' => array(
+				'lightning animation (using only JQuery/CSS)' => array(
 					'url' => '/shenanigans/lightning',
 					'target' => '',
 					'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1)
 				),
-				'multi-layer menu (HTML/CSS only!)' => array(
-					'url' => '/shenanigans/cssmenu',
+				'nested dropdown menu (using only HTML/CSS)' => array(
+					'url' => '/shenanigans/nested_cssmenu',
 					'target' => '',
 					'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1)
 				)
 			)
 		),
+		'Coding Virtues' => array(
+			'url' => '/coding_virtues',
+			'target' => '',
+			'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1)
+		)
 	);
 
 
@@ -57,7 +62,7 @@ class MY_Controller extends CI_Controller {
 
 
 	protected function filepathToHTML($file, $start_html, $end_html) {
-		return $start_html . $file . '?v=' . filemtime($file) . $end_html;
+		return $start_html . $file . '?v=' . filemtime(FCPATH . trim($file, '/\\')) . $end_html;
 	}
 
 	protected function filepathsToHTML($files, $start_html, $end_html) {
@@ -71,6 +76,14 @@ class MY_Controller extends CI_Controller {
 
 
 	protected function render($url, $data = null) {
+		$params = $this->input->get();
+		if($this->input->get() == null) {
+			$params = "";
+		}
+		else {
+			$params = http_build_query($this->input->get());
+		}
+
 		if($this->input->is_ajax_request()) {
 			$this->load->view($url);
 		}
@@ -78,19 +91,22 @@ class MY_Controller extends CI_Controller {
 			$css_files = array();
 			$js_files = array();
 			if(file_exists('assets/css/veeb.min.css')) {
-				$css_files[] = 'assets/css/veeb.min.css';
+				$css_files[] = '/assets/css/veeb.min.css';
 			}
 			else {
-				$css_files[] = 'assets/css/veeb.css';
+				$css_files[] = '/assets/css/veeb.css';
+				// $css_files[] = '/assets/js/addons/google-code-prettify/prettify.css';
+				$css_files[] = '/assets/js/addons/google-code-prettify/sunburst.css';
 			}
 
 			if(file_exists('assets/css/veeb.min.js')) {
-				$js_files[] = 'assets/js/veeb.min.js';
+				$js_files[] = '/assets/js/veeb.min.js';
 			}
 			else {
-				$js_files[] = 'assets/js/addons/jquery-1.10.2.min.js';
-				$js_files[] = 'assets/js/addons/json2.min.js';
-				$js_files[] = 'assets/js/addons/jquery.dataTables.min.js';
+				$js_files[] = '/assets/js/addons/jquery-1.10.2.min.js';
+				$js_files[] = '/assets/js/addons/json2.min.js';
+				$js_files[] = '/assets/js/addons/jquery.dataTables.min.js';
+				$js_files[] = '/assets/js/addons/google-code-prettify/prettify.js';
 			}
 
 			// $version = filemtime('.git/index');
@@ -102,7 +118,8 @@ class MY_Controller extends CI_Controller {
 						$this->filepathToHTML('favicon.gif', '<link rel="icon" href="', '" type="image/gif">') .
 						$this->filepathsToHTML($css_files, '<link href="', '" rel="stylesheet" type="text/css">') .
 						$this->filepathsToHTML($js_files, '<script type="text/javascript" src="', '"></script>'),
-					'menu' => '<div class="menu">' . $this->buildMenu(MY_Controller::$menu_items) . '</div>'
+					'menu' => '<div class="menu">' . $this->buildMenu(MY_Controller::$menu_items) . '</div>',
+					'params' => $params
 				)
 			);
 			$this->load->view($url, $data);
