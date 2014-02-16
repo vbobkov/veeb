@@ -16,6 +16,10 @@ class Shenanigans extends MY_Controller {
 	public function nested_cssmenu() {
 		$this->render('nested_cssmenu');
 	}
+
+	public function nested_cssmenu_mobile() {
+		$this->render('nested_cssmenu_mobile');
+	}
 }
 
 /* End of file shenanigans.php */

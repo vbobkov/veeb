@@ -20,18 +20,18 @@ class MY_Controller extends CI_Controller {
 			'target' => '',
 			'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1),
 			'subcats' => array(
-				'DataTables.js stuff' => array(
-					'url' => '/shenanigans/datatables',
-					'target' => '',
-					'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1),
-					'subcats' => array(
-						'template generator' => array(
-							'url' => '/shenanigans/datatables/template_generator',
-							'target' => '',
-							'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1)
-						)
-					)
-				),
+				// 'DataTables.js stuff' => array(
+					// 'url' => '/shenanigans/datatables',
+					// 'target' => '',
+					// 'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1),
+					// 'subcats' => array(
+						// 'template generator' => array(
+							// 'url' => '/shenanigans/datatables/template_generator',
+							// 'target' => '',
+							// 'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1)
+						// )
+					// )
+				// ),
 				'lightning animation (using only JQuery/CSS)' => array(
 					'url' => '/shenanigans/lightning',
 					'target' => '',
