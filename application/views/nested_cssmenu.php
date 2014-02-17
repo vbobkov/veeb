@@ -17,7 +17,7 @@
 		</li>
 		<li>
 			In its basic form, this CSS menu is entirely dependent on the :hover event.
-			For mobile/touchpad devices, <a target="_blank" href="/shenanigans/nested_cssmenu_mobile">a little Javascript/responsive CSS becomes necessary</a>.
+			For mobile/touchpad devices, <a target="_blank" href="/shenanigans/nested_cssmenu_mobile">a little Javascript becomes necessary</a>.
 		</li>
 		<br />
 		This tutorial is as much about explaining what is going on as providing the example.
@@ -154,7 +154,7 @@ element > .element2 {
 		</style>
 		<div class="cssmenu" id="#cssmenu-example">
 			<div class="cssmenu-item">
-				<span target="" href="#cssmenu-example">link 1 (single-layered subcategories)</span>
+				<a target="" href="#cssmenu-example">link 1 (single-layered subcategories)</a>
 				<div class="cssmenu-item-list">
 					<div class="cssmenu-item">
 						<a target="" href="#cssmenu-example">link 1.1</a>
@@ -181,9 +181,19 @@ element > .element2 {
 						<div class="cssmenu-item-list">
 							<div class="cssmenu-item">
 								<a target="" href="#cssmenu-example">link 2.1.1</a>
+								<div class="cssmenu-item-list">
+									<div class="cssmenu-item">
+										<a target="" href="#cssmenu-example">link 2.1.1.1</a>
+									</div>
+								</div>
 							</div>
 							<div class="cssmenu-item">
 								<a target="" href="#cssmenu-example">link 2.1.2</a>
+								<div class="cssmenu-item-list">
+									<div class="cssmenu-item">
+										<a target="" href="#cssmenu-example">link 2.1.2.1</a>
+									</div>
+								</div>
 							</div>
 							<div class="cssmenu-item">
 								<a target="" href="#cssmenu-example">link 2.1.3</a>
@@ -294,9 +304,19 @@ I encourage everyone else to do the same, as it is part of one of the Coding Vir
 				&lt;div class="cssmenu-item-list"&gt;
 					&lt;div class="cssmenu-item"&gt;
 						&lt;a target="" href="#cssmenu-example"&gt;link 2.1.1&lt;/a&gt;
+						&lt;div class="cssmenu-item-list"&gt;
+							&lt;div class="cssmenu-item"&gt;
+								&lt;a target="" href="#cssmenu-example"&gt;link 2.1.1.1&lt;/a&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
 					&lt;/div&gt;
 					&lt;div class="cssmenu-item"&gt;
 						&lt;a target="" href="#cssmenu-example"&gt;link 2.1.2&lt;/a&gt;
+						&lt;div class="cssmenu-item-list"&gt;
+							&lt;div class="cssmenu-item"&gt;
+								&lt;a target="" href="#cssmenu-example"&gt;link 2.1.2.1&lt;/a&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
 					&lt;/div&gt;
 					&lt;div class="cssmenu-item"&gt;
 						&lt;a target="" href="#cssmenu-example"&gt;link 2.1.3&lt;/a&gt;

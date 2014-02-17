@@ -326,3 +326,8 @@ body {
 #container ul li {
 	margin-left: 4em;
 }
+
+#container pre {
+	overflow: auto;
+	margin-bottom: 3em;
+}
