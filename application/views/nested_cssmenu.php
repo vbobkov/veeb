@@ -42,7 +42,7 @@
 			</pre>
 		</li>
 		<li>
-			The <a href="http://www.w3schools.com/cssref/sel_element_gt.asp">nearest-child selector</a>.
+			The <a target="_blank" href="http://www.w3schools.com/cssref/sel_element_gt.asp">nearest-child selector</a>.
 			<pre class="prettyprint lang-css">
 /* every element with class 'element2' whose immediate parent has class 'element1' */
 element >.element2 {
