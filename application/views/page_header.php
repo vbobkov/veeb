@@ -73,7 +73,7 @@ float Q_rsqrt( float number )
 	return y;
 }
 </pre>
-<pre>a website without any images or custom fonts</pre>
+<pre>an image-less website</pre>
 				<div class="l33t-stripes">
 					<div class="stripe1"></div>
 					<div class="stripe2"></div>

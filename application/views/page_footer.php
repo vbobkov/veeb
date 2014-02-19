@@ -1,5 +1,5 @@
 </div>
-<div id="footer"><div class="footer-content">Copyright &copy; 2014 Veeb</div></div>
+<div id="footer"><div class="footer-content">Copyright &copy; 2014 VeeB</div></div>
 </body>
 </html>
 

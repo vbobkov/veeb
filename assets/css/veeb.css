@@ -740,9 +740,6 @@ body {
 }
 
 #container .column-center {
-	background-color: rgba(0, 0, 0, 0.75);
-	color: rgb(0,255,0);
-	font-family: "Courier New", Courier, monospace;
 	min-height: 20em;
 	width: 60%;
 }
