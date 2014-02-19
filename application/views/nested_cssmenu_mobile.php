@@ -76,7 +76,7 @@ $(document).ready(function() {
 });
 	</pre>
 
-	That's it!  Without comments, the finished code is then ~15 lines total and copy/pastable to any page (or <a target="_blank" href="http://en.wikipedia.org/wiki/Model-view-controller">MVC</a> header/footer):
+	That's it!  Without comments, the finished code is then 1 standalone JQuery event binding (15-20 lines total), copy/pastable to any page (or <a target="_blank" href="http://en.wikipedia.org/wiki/Model-view-controller">MVC</a> header/footer):
 	<pre class="prettyprint lang-js">
 $(document).ready(function() {
 	$(document).delegate('*', 'click touchstart', function(event) {
