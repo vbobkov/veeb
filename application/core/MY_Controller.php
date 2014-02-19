@@ -16,28 +16,28 @@ class MY_Controller extends CI_Controller {
 			'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1)
 		),
 		'Shenanigans' => array(
-			'url' => '/shenanigans',
+			'url' => '#header',
 			'target' => '',
 			'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1),
 			'subcats' => array(
 				'DataTables.js stuff' => array(
-					'url' => '/shenanigans/datatables',
+					'url' => '#header',
 					'target' => '',
 					'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1),
 					'subcats' => array(
 						'this is' => array(
 							// 'url' => '/shenanigans/datatables/template_generator',
-							'url' => '',
+							'url' => '#header',
 							'target' => '',
 							'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1)
 						),
 						'still under' => array(
-							'url' => '',
+							'url' => '#header',
 							'target' => '',
 							'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1)
 						),
 						'construction' => array(
-							'url' => '',
+							'url' => '#header',
 							'target' => '',
 							'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1)
 						)
@@ -59,7 +59,12 @@ class MY_Controller extends CI_Controller {
 			// 'url' => '/coding_virtues',
 			// 'target' => '',
 			// 'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1)
-		// )
+		// ),
+		'About Me' => array(
+			'url' => '/about',
+			'target' => '',
+			'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1)
+		)
 	);
 
 
@@ -126,7 +131,7 @@ class MY_Controller extends CI_Controller {
 				'page_header',
 				array(
 					'header_includes' =>
-						$this->filepathToHTML('favicon.gif', '<link rel="icon" href="', '" type="image/gif">') .
+						$this->filepathToHTML('/favicon.gif', '<link rel="icon" href="', '" type="image/gif">') .
 						$this->filepathsToHTML($css_files, '<link href="', '" rel="stylesheet" type="text/css">') .
 						$this->filepathsToHTML($js_files, '<script type="text/javascript" src="', '"></script>'),
 					'menu' => '<div class="menu">' . $this->buildMenu(MY_Controller::$menu_items) . '</div>',

@@ -13,6 +13,10 @@ class Shenanigans extends MY_Controller {
 		$this->render('shenanigans');
 	}
 
+	public function datatables() {
+		$this->render('datatables');
+	}
+
 	public function nested_cssmenu() {
 		$this->render('nested_cssmenu');
 	}

@@ -20,7 +20,7 @@
 		<br />
 		This tutorial is as much about explaining what's going on as providing the example.
 		If you only wish to see what the finished code looks like, scroll down to the very bottom.
-		So, in the spirit of this website, let's see what a little old-school text editing can do!
+		Anyway, in the spirit of this website, let's see what old-school text editing can do by itself!
 		<br /><br />
 		The cornerstone of just about any HTML/CSS-only menu consists of two ideas:
 		<li>
@@ -89,12 +89,13 @@ element >.element2 {
 
 <ul>
 	<div>
-	So, just with those 4 CSS rules, we are now capable of building dropdown menus of any complexity and any structure and shape.
+	With these 4 CSS rules as a starting point, we are now capable of building dropdown menus of any complexity and any structure and shape.
 	We can use CSS rules to further coerce the menus into vertical/horizontal/diagonal bars of any sort.
 	The following example will cover the most common navigation menu, where
 	<li>the main links are a horizontal bar</li>
 	<li>each main link consists of a vertical dropdown list of more submenus, possibly with multiple layers.</li>
 
+	<br />
 	Below is an example of some (very) basic positioning, shape, borders and coloring.
 	<br />
 	(This website's menu is actually just a slightly fancier version of this example.)
@@ -209,6 +210,7 @@ element >.element2 {
 		</div>
 	</div>
 
+	<br />
 	<div class="title2">code for the example</div>
 	<pre class="prettyprint lang-html">
 &lt;style&gt;

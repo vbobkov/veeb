@@ -22,8 +22,11 @@
 		}
 	}
 
+
+
 	$(document).ready(function() {
 		prettyPrint();
+
 		$(document).delegate('*', 'click touchstart', function(event) {
 			var menu = $(this).closest('.cssmenu-item');
 			var submenu = menu.find('>.cssmenu-item-list');
@@ -42,6 +45,7 @@
 				$('.cssmenu-item-list').css('display', '');
 			}
 		});
+
 		$(document).delegate('pre', 'click', function(event) {
 			if($(this).hasClass('selected-code')) {
 				$(this).removeClass('selected-code');
@@ -51,6 +55,13 @@
 				$(this).addClass('selected-code');
 				selectText(this);
 			}
+		});
+
+		$('#container pre').each(function(event) {
+			$(this).attr('title', 'click to select/unselect all');
+		});
+		$('.title1').each(function(event) {
+			$(this).prepend('<div class="title1-upper-border"></div>');
 		});
 	});
 </script>
