@@ -4,6 +4,8 @@
 */
 
 body {
+	font-family: arial,sans-serif;
+	font-size: 100%;
 	margin: 0em;
 	padding: 0em;
 }
@@ -22,7 +24,7 @@ body {
 	display: block;
 }
 
-.menu-item:hover > .menu-item-list {
+.menu-item:hover >.menu-item-list {
 	display: inline-block;
 }
 
@@ -32,6 +34,7 @@ body {
 .menu {
 	border: 0.25em ridge rgb(192,192,192);
 	border-top: none;
+	font-size: 100%;
 	height: 1.75em;
 	margin: 0em 1.25em 0em 1.25em;
 	position: relative;
@@ -61,7 +64,7 @@ body {
 	color: rgb(0,255,0);
 }
 
-.menu > .menu-item:hover {
+.menu >.menu-item:hover {
 	background: rgba(128,128,128,0.25);
 	color: rgb(0,0,255);
 }
@@ -70,7 +73,7 @@ body {
 	border-color: rgba(192,192,192,1);
 }
 
-.menu > .menu-item,
+.menu >.menu-item,
 .menu-item-list .menu-item:last-child {
 	border-bottom: none;
 }
@@ -269,6 +272,13 @@ body {
 
 /* header, footer, container */
 #header,
+#background,
+#container,
+#footer {
+	min-width: 40em;
+}
+
+#header,
 #footer {
 	position: fixed;
 	z-index: 1337;
@@ -316,11 +326,409 @@ body {
 
 
 
+/* t3h m4g1ck4ll l33t b4ckgr0und */
+#background {
+	background-color: transparent;
+	min-height: 25em;
+	position: fixed;
+	width: 100%;
+
+	left: 0em;
+	top: 0em;
+	z-index: -1337;
+}
+
+#background .circuits {
+	position: absolute;
+}
+
+#background .circuit1,
+#background .circuit2,
+#background .circuit3,
+#background .circuit4,
+#background .circuit5 {
+	top: 3em;
+}
+
+#background .circuit1 {
+	height: 10em;
+	left: 0em;
+	top: 12em;
+
+	border-left: transparent;
+	border-top: 1em solid rgba(0,0,0,0);
+	border-right: 1em solid rgba(240,240,240,1);
+}
+
+#background .circuit2-1,
+#background .circuit2-2,
+#background .circuit3-1,
+#background .circuit3-2 {
+	height: 0em;
+}
+
+#background .circuit2-1,
+#background .circuit3-1 {
+	border-left: transparent;
+	border-top: 1em solid rgba(0,0,0,0);
+	border-right: 1em solid rgba(240,240,240,1);
+	border-bottom: 1em solid rgba(0,0,0,0);
+}
+
+#background .circuit2-2,
+#background .circuit3-2 {
+	border-left: 1em solid rgba(240,240,240,1);
+	border-top: 1em solid rgba(0,0,0,0);
+	border-right: transparent;
+	border-bottom: 1em solid rgba(0,0,0,0);
+}
+
+#background .circuit2-1,
+#background .circuit2-2 {
+	left: 1em;
+}
+
+#background .circuit2-1 {
+	top: 11em;
+}
+
+#background .circuit2-2 {
+	top: 12em;
+}
+
+#background .circuit3-1,
+#background .circuit3-2 {
+	left: 2em;
+}
+
+#background .circuit3-1 {
+	top: 10em;
+}
+
+#background .circuit3-2 {
+	top: 11em;
+}
+
+#background .circuit4 {
+	height: 8em;
+	left: 3em;
+
+	border-left: 1em solid rgba(240,240,240,1);
+	border-right: transparent;
+	border-bottom: 1em solid rgba(0,0,0,0);
+}
+
+#background .circuit5 {
+	background-color: rgba(240,240,240,1);
+	height: 15em;
+	left: 5em;
+	width: 1em;
+
+	/*
+	-webkit-border-radius: 0.5em;
+	-moz-border-radius: 0.5em;
+	border-radius: 0.5em;
+	*/
+}
+
+#background .circuit6 {
+	height: 8em;
+	left: 7em;
+
+	border-left: transparent;
+	border-right: 1em solid rgba(240,240,240,1);
+	border-bottom: 1em solid rgba(0,0,0,0);
+}
+
+#background .circuit7-1,
+#background .circuit7-2 {
+	height: 0em;
+}
+
+#background .circuit7-1 {
+	border-left: 1em solid rgba(240,240,240,1);
+	border-top: 1em solid rgba(0,0,0,0);
+	border-right: transparent;
+	border-bottom: 1em solid rgba(0,0,0,0);
+}
+
+#background .circuit7-2 {
+	border-left: transparent;
+	border-top: 1em solid rgba(0,0,0,0);
+	border-right: 1em solid rgba(240,240,240,1);
+	border-bottom: 1em solid rgba(0,0,0,0);
+}
+
+#background .circuit7-1,
+#background .circuit7-2 {
+	left: 8em;
+}
+
+#background .circuit7-1 {
+	top: 7em;
+}
+
+#background .circuit7-2 {
+	top: 8em;
+}
+
+#background .circuit8 {
+	height: 5em;
+	left: 9em;
+	top: 8em;
+
+	border-left: 1em solid rgba(240,240,240,1);
+	border-top: 1em solid rgba(0,0,0,0);
+	border-right: transparent;
+}
+
+#background .circuit9-1,
+#background .circuit10-5 {
+	height: 3em;
+	top: 4em;
+	width: 1em;
+
+	border-left: 1em solid rgba(0,0,0,0);
+	border-top: 1em solid rgba(0,0,0,0);
+	border-right: 1em solid rgba(240,240,240,1);
+	border-bottom: 1em solid rgba(0,0,0,0);
+}
+
+#background .circuit9-2,
+#background .circuit10-4 {
+	height: 0em;
+	top: 6em;
+	width: 0em;
+
+	border-left: transparent;
+	border-top: 1em solid rgba(0,0,0,0);
+	border-right: 1em solid rgba(0,0,0,0);
+	border-bottom: 1em solid rgba(240,240,240,1);
+}
+
+#background .circuit9-4,
+#background .circuit10-2 {
+	height: 0em;
+	top: 6em;
+	width: 0em;
+
+	border-left: 1em solid rgba(0,0,0,0);
+	border-top: 1em solid rgba(0,0,0,0);
+	border-right: transparent;
+	border-bottom: 1em solid rgba(240,240,240,1);
+}
+
+#background .circuit9-5,
+#background .circuit10-1 {
+	height: 3em;
+	top: 4em;
+	width: 1em;
+
+	border-left: 1em solid rgba(240,240,240,1);
+	border-top: 1em solid rgba(0,0,0,0);
+	border-right: 1em solid rgba(0,0,0,0);
+	border-bottom: 1em solid rgba(0,0,0,0);
+}
+
+#background .circuit9-1 {
+	left: 9em;
+}
+
+#background .circuit9-2 {
+	left: 12em;
+}
+
+#background .circuit9-3 {
+	background-color: rgba(240,240,240,1);
+	height: 1em;
+	left: 12em;
+	top: 8em;
+	width: 7em;
+}
+
+#background .circuit9-4 {
+	left: 18em;
+}
+
+#background .circuit9-5 {
+	left: 19em;
+}
+
+#background .circuit10-1 {
+	right: 9em;
+}
+
+#background .circuit10-2 {
+	right: 12em;
+}
+
+#background .circuit10-3 {
+	background-color: rgba(240,240,240,1);
+	height: 1em;
+	right: 12em;
+	top: 8em;
+	width: 7em;
+}
+
+#background .circuit10-4 {
+	right: 18em;
+}
+
+#background .circuit10-5 {
+	right: 19em;
+}
+
+#background .circuit11,
+#background .circuit12,
+#background .circuit13,
+#background .circuit14,
+#background .circuit15 {
+	top: 3em;
+}
+
+#background .circuit11 {
+	height: 10em;
+	right: 0em;
+	top: 12em;
+
+	border-left: 1em solid rgba(240,240,240,1);
+	border-top: 1em solid rgba(0,0,0,0);
+	border-right: transparent;
+}
+
+#background .circuit12-1,
+#background .circuit12-2,
+#background .circuit13-1,
+#background .circuit13-2 {
+	height: 0em;
+}
+
+#background .circuit12-1,
+#background .circuit13-1 {
+	border-left: 1em solid rgba(240,240,240,1);
+	border-top: 1em solid rgba(0,0,0,0);
+	border-right: transparent;
+	border-bottom: 1em solid rgba(0,0,0,0);
+}
+
+#background .circuit12-2,
+#background .circuit13-2 {
+	border-left: transparent;
+	border-top: 1em solid rgba(0,0,0,0);
+	border-right: 1em solid rgba(240,240,240,1);
+	border-bottom: 1em solid rgba(0,0,0,0);
+}
+
+#background .circuit12-1,
+#background .circuit12-2 {
+	right: 1em;
+}
+
+#background .circuit12-1 {
+	top: 11em;
+}
+
+#background .circuit12-2 {
+	top: 12em;
+}
+
+#background .circuit13-1,
+#background .circuit13-2 {
+	right: 2em;
+}
+
+#background .circuit13-1 {
+	top: 10em;
+}
+
+#background .circuit13-2 {
+	top: 11em;
+}
+
+#background .circuit14 {
+	height: 8em;
+	right: 3em;
+
+	border-left: transparent;
+	border-right: 1em solid rgba(240,240,240,1);
+	border-bottom: 1em solid rgba(0,0,0,0);
+}
+
+#background .circuit15 {
+	background-color: rgba(240,240,240,1);
+	height: 15em;
+	right: 5em;
+	width: 1em;
+
+	/*
+	-webkit-border-radius: 0.5em;
+	-moz-border-radius: 0.5em;
+	border-radius: 0.5em;
+	*/
+}
+
+#background .circuit16 {
+	height: 8em;
+	right: 7em;
+
+	border-left: 1em solid rgba(240,240,240,1);
+	border-right: transparent;
+	border-bottom: 1em solid rgba(0,0,0,0);
+}
+
+#background .circuit17-1,
+#background .circuit17-2 {
+	height: 0em;
+}
+
+#background .circuit17-1 {
+	border-left: transparent;
+	border-top: 1em solid rgba(0,0,0,0);
+	border-right: 1em solid rgba(240,240,240,1);
+	border-bottom: 1em solid rgba(0,0,0,0);
+}
+
+#background .circuit17-2 {
+	border-left: 1em solid rgba(240,240,240,1);
+	border-top: 1em solid rgba(0,0,0,0);
+	border-right: transparent;
+	border-bottom: 1em solid rgba(0,0,0,0);
+}
+
+#background .circuit17-1,
+#background .circuit17-2 {
+	right: 8em;
+}
+
+#background .circuit17-1 {
+	top: 7em;
+}
+
+#background .circuit17-2 {
+	top: 8em;
+}
+
+#background .circuit18 {
+	height: 5em;
+	right: 9em;
+	top: 8em;
+
+	border-left: transparent;
+	border-top: 1em solid rgba(0,0,0,0);
+	border-right: 1em solid rgba(240,240,240,1);
+}
+
+
+
 /* page styling */
+#container {
+	font-size: 90%;
+}
+
 #container ul {
-	margin: 0em;
-	margin-bottom: 3em;
-	padding: 0em;
+	/*border: 1px solid black;*/
+	margin: 0em 0em 3em 0em;
+	padding: 1em;
 }
 
 #container ul li {
@@ -330,4 +738,18 @@ body {
 #container pre {
 	overflow: auto;
 	margin-bottom: 3em;
+}
+
+#container >ul {
+	padding-bottom: 0em;
+	padding-top: 0em;
+}
+
+.title1 {
+	font-size: 125%;
+	text-align: center;
+}
+
+.title2 {
+	text-align: center;
 }

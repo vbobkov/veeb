@@ -5,6 +5,44 @@
 	<?php echo $header_includes; ?>
 </head>
 <body>
+	<div id="background">
+		<div class="circuits circuit1"></div>
+		<div class="circuits circuit2-1"></div>
+		<div class="circuits circuit2-2"></div>
+		<div class="circuits circuit3-1"></div>
+		<div class="circuits circuit3-2"></div>
+		<div class="circuits circuit4"></div>
+		<div class="circuits circuit5"></div>
+		<div class="circuits circuit6"></div>
+		<div class="circuits circuit7-1"></div>
+		<div class="circuits circuit7-2"></div>
+		<div class="circuits circuit8"></div>
+
+		<div class="circuits circuit9-1"></div>
+		<div class="circuits circuit9-2"></div>
+		<div class="circuits circuit9-3"></div>
+		<div class="circuits circuit9-4"></div>
+		<div class="circuits circuit9-5"></div>
+
+		<div class="circuits circuit10-1"></div>
+		<div class="circuits circuit10-2"></div>
+		<div class="circuits circuit10-3"></div>
+		<div class="circuits circuit10-4"></div>
+		<div class="circuits circuit10-5"></div>
+
+		<div class="circuits circuit11"></div>
+		<div class="circuits circuit12-1"></div>
+		<div class="circuits circuit12-2"></div>
+		<div class="circuits circuit13-1"></div>
+		<div class="circuits circuit13-2"></div>
+		<div class="circuits circuit14"></div>
+		<div class="circuits circuit15"></div>
+		<div class="circuits circuit16"></div>
+		<div class="circuits circuit17-1"></div>
+		<div class="circuits circuit17-2"></div>
+		<div class="circuits circuit18"></div>
+	</div>
+
 	<div id="header">
 		<div class="t3h-logo">
 			<div class="logo1">VeeB's corner</div>
@@ -35,7 +73,7 @@ float Q_rsqrt( float number )
 	return y;
 }
 </pre>
-<pre>a website without any images</pre>
+<pre>a website without any images or custom fonts</pre>
 				<div class="l33t-stripes">
 					<div class="stripe1"></div>
 					<div class="stripe2"></div>

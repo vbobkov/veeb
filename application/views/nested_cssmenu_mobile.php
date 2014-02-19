@@ -1,6 +1,8 @@
 <ul>
-	Continuing where the <a target="_blank" href="/shenanigans/nested_cssmenu"> nested CSS Menu tutorial left off</a>, let us address the mobile/touchpad issue.
-	The solution is essentially 1 well-placed event bind, but there's a lot of logic packed into very few lines of code.  In my example, I shall use $.delegate() instead of $.bind(), but that's mostly a personal preference.
+	<div class="title1">Making the Multi-Layer Menu Mobile Friendly</div>
+	<ul>
+	Continuing where the <a target="_blank" href="/shenanigans/nested_cssmenu"> nested CSS Menu tutorial left off</a>, let's address the mobile/touchpad issue.
+	The easiest solution is one well-placed event bind. Let's take it slow, as there's a lot of logic packed into very few lines of code.  In my example, I shall use $.delegate() instead of $.bind(), but that's mostly a personal preference.
 	So, let's first assume a few things:
 	<li>We wish to keep the hover functionality.</li>
 	<li>We wish to expand menus on a touch start/click event, if they are not already expanded.</li>
@@ -8,20 +10,19 @@
 	<br />
 
 	The finished JQuery code is at the bottom of the page, and is a rather small piece of copy/paste code.
-	Once again, there is going to be a lot going on, so let's take it one step at a time.
 	First, determine what events we are modifying:
 	<li>touchstart - touchpads exist on most mobile devices, and we have to assume click will not always be there to rescue us</li>
 	<li>click - if click is there, touchstart isn't, AND hover/mouseover is absent as well (which can and does happen)</li>
 	<li>either way, one of these 2 events WILL be there for us to use</li>
 	<br />
 
-	Now, let's determine what set of elements we need to capture the events for.  This one is trickier than it looks, because we have to account for users clicking/hvoering outside of the menus:
+	Now, let's determine what set of elements we need to capture the events for.
 	<li>the menu items (in this case, .cssmenu-item)</li>
 	<li>the submenus (in this case, .cssmenu-item-list)</li>
 	<li>everything on the page (if the user wants to close the menu without making a selection)</li>
 	<li>so really, everything on the page</li>
 
-	So, the event bind will have to be on everything on the page, for touchstart and click events, like so:
+	The event bind will have to be on everything on the page for touchstart and click events, like so:
 	<pre class="prettyprint lang-js">
 $(document).ready(function() {
 	// bind can also be used (line comment below), but I prefer delegate
@@ -88,6 +89,12 @@ $(document).ready(function() {
 				$('.cssmenu-item-list').css('display', '');
 				menu.parents('.cssmenu-item-list').css('display', 'inline-block');
 				submenu.css('display', 'inline-block');
+			}
+			else {
+				// user has clicked on a menu link that either has no submenus or is already open
+				// typically, you'd want to put whatever your menu selection clicks are supposed to do here
+				// (e.g. ajax loading a page, to avoid reloading shared resources such as header/footer/etc)
+				// you can always leave this blank if you're using regular hyperlinks
 			}
 		}
 		else {
@@ -224,6 +231,8 @@ $(document).ready(function() {
 						menu.parents('.cssmenu-item-list').css('display', 'inline-block');
 						submenu.css('display', 'inline-block');
 					}
+					else {
+					}
 				}
 				else {
 					$('.cssmenu-item-list').css('display', '');
@@ -231,4 +240,5 @@ $(document).ready(function() {
 			});
 		});
 	</script>
+	</ul>
 </ul>

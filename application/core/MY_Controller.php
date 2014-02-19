@@ -20,35 +20,46 @@ class MY_Controller extends CI_Controller {
 			'target' => '',
 			'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1),
 			'subcats' => array(
-				// 'DataTables.js stuff' => array(
-					// 'url' => '/shenanigans/datatables',
-					// 'target' => '',
-					// 'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1),
-					// 'subcats' => array(
-						// 'template generator' => array(
-							// 'url' => '/shenanigans/datatables/template_generator',
-							// 'target' => '',
-							// 'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1)
-						// )
-					// )
-				// ),
-				'lightning animation (using only JQuery/CSS)' => array(
-					'url' => '/shenanigans/lightning',
+				'DataTables.js stuff' => array(
+					'url' => '/shenanigans/datatables',
 					'target' => '',
-					'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1)
+					'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1),
+					'subcats' => array(
+						'this is' => array(
+							// 'url' => '/shenanigans/datatables/template_generator',
+							'url' => '',
+							'target' => '',
+							'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1)
+						),
+						'still under' => array(
+							'url' => '',
+							'target' => '',
+							'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1)
+						),
+						'construction' => array(
+							'url' => '',
+							'target' => '',
+							'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1)
+						)
+					)
 				),
-				'nested dropdown menu (using only HTML/CSS)' => array(
+				// 'lightning animation (using only JQuery/CSS)' => array(
+					// 'url' => '/shenanigans/lightning',
+					// 'target' => '',
+					// 'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1)
+				// ),
+				'nested dropdown menu<br />(using only HTML/CSS)' => array(
 					'url' => '/shenanigans/nested_cssmenu',
 					'target' => '',
 					'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1)
 				)
 			)
 		),
-		'Coding Virtues' => array(
-			'url' => '/coding_virtues',
-			'target' => '',
-			'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1)
-		)
+		// 'Coding Virtues' => array(
+			// 'url' => '/coding_virtues',
+			// 'target' => '',
+			// 'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1)
+		// )
 	);
 
 
