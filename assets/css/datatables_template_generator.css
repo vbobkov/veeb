@@ -1,0 +1,36 @@
+#gen-wrapper {
+}
+
+#example-config,
+#example-code {
+	display: inline-block;
+	vertical-align: top;
+	width: 45%;
+}
+
+#example-config {
+	margin: 1em;
+	padding: 1em;
+}
+
+#example-code pre {
+	max-height: 40em;
+}
+
+#example-config #example-style {
+	height: 10em;
+	resize: none;
+	width: 40em;
+}
+
+#example-wrapper {
+	background-color: rgb(255,255,255);
+	border: 1px solid black;
+	display: inline-block;
+	margin: 0em 1em 1em 1em;
+	padding: 1em;
+
+	-webkit-border-radius: 1em;
+	-moz-border-radius: 1em;
+	border-radius: 1em;
+}

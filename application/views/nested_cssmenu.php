@@ -212,8 +212,8 @@ element >.element2 {
 
 	<br />
 	<div class="title2">code for the example</div>
-	<pre class="prettyprint lang-html">
-&lt;style&gt;
+	<pre class="prettyprint lang-html replace-gtlt">
+<style>
 /* the 4 essential rules */
 .cssmenu-item {
 	display: inline-block;
@@ -256,78 +256,78 @@ element >.element2 {
 .cssmenu-item-list {
 	margin-left: 2em;
 }
-&lt;/style&gt;
+</style>
 
-&lt;!--
+<!--
 And now, the HTML for this particular example.
 Note that I purposely use specifically named classes and nothing else.
 This is to remain as unobtrusive as possible to any other styling and plugins on the page.
 I encourage everyone else to do the same, as it is part of one of the Coding Virtues.
---&gt;
-&lt;div class="cssmenu"&gt;
-	&lt;div class="cssmenu-item"&gt;
-		&lt;a target="" href="#cssmenu-example"&gt;link 1 (single-layered subcategories)&lt;/a&gt;
-		&lt;div class="cssmenu-item-list"&gt;
-			&lt;div class="cssmenu-item"&gt;
-				&lt;a target="" href="#cssmenu-example"&gt;link 1.1&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="cssmenu-item"&gt;
-				&lt;a target="" href="#cssmenu-example"&gt;link 1.2&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="cssmenu-item"&gt;
-				&lt;a target="" href="#cssmenu-example"&gt;link 1.3&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="cssmenu-item"&gt;
-				&lt;a target="" href="#cssmenu-example"&gt;link 1.4&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="cssmenu-item"&gt;
-				&lt;a target="" href="#cssmenu-example"&gt;link 1.5&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	&lt;div class="cssmenu-item"&gt;
-		&lt;a target="" href="#cssmenu-example"&gt;link 2 (multi-layered subcategories)&lt;/a&gt;
-		&lt;div class="cssmenu-item-list"&gt;
-			&lt;div class="cssmenu-item"&gt;
-				&lt;a target="" href="#cssmenu-example"&gt;link 2.1&lt;/a&gt;
-				&lt;div class="cssmenu-item-list"&gt;
-					&lt;div class="cssmenu-item"&gt;
-						&lt;a target="" href="#cssmenu-example"&gt;link 2.1.1&lt;/a&gt;
-						&lt;div class="cssmenu-item-list"&gt;
-							&lt;div class="cssmenu-item"&gt;
-								&lt;a target="" href="#cssmenu-example"&gt;link 2.1.1.1&lt;/a&gt;
-							&lt;/div&gt;
-						&lt;/div&gt;
-					&lt;/div&gt;
-					&lt;div class="cssmenu-item"&gt;
-						&lt;a target="" href="#cssmenu-example"&gt;link 2.1.2&lt;/a&gt;
-						&lt;div class="cssmenu-item-list"&gt;
-							&lt;div class="cssmenu-item"&gt;
-								&lt;a target="" href="#cssmenu-example"&gt;link 2.1.2.1&lt;/a&gt;
-							&lt;/div&gt;
-						&lt;/div&gt;
-					&lt;/div&gt;
-					&lt;div class="cssmenu-item"&gt;
-						&lt;a target="" href="#cssmenu-example"&gt;link 2.1.3&lt;/a&gt;
-					&lt;/div&gt;
-				&lt;/div&gt;
-			&lt;/div&gt;
-			&lt;div class="cssmenu-item"&gt;
-				&lt;a target="" href="#cssmenu-example"&gt;link 2.2&lt;/a&gt;
-				&lt;div class="cssmenu-item-list"&gt;
-					&lt;div class="cssmenu-item"&gt;
-						&lt;a target="" href="#cssmenu-example"&gt;link 2.2.1&lt;/a&gt;
-					&lt;/div&gt;
-				&lt;/div&gt;
-			&lt;/div&gt;
-			&lt;div class="cssmenu-item"&gt;
-				&lt;a target="" href="#cssmenu-example"&gt;link 2.3&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	&lt;div class="cssmenu-item"&gt;
-		&lt;a target="" href="#cssmenu-example"&gt;link 3 (no subcategories)&lt;/a&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
+-->
+<div class="cssmenu">
+	<div class="cssmenu-item">
+		<a target="" href="#cssmenu-example">link 1 (single-layered subcategories)</a>
+		<div class="cssmenu-item-list">
+			<div class="cssmenu-item">
+				<a target="" href="#cssmenu-example">link 1.1</a>
+			</div>
+			<div class="cssmenu-item">
+				<a target="" href="#cssmenu-example">link 1.2</a>
+			</div>
+			<div class="cssmenu-item">
+				<a target="" href="#cssmenu-example">link 1.3</a>
+			</div>
+			<div class="cssmenu-item">
+				<a target="" href="#cssmenu-example">link 1.4</a>
+			</div>
+			<div class="cssmenu-item">
+				<a target="" href="#cssmenu-example">link 1.5</a>
+			</div>
+		</div>
+	</div>
+	<div class="cssmenu-item">
+		<a target="" href="#cssmenu-example">link 2 (multi-layered subcategories)</a>
+		<div class="cssmenu-item-list">
+			<div class="cssmenu-item">
+				<a target="" href="#cssmenu-example">link 2.1</a>
+				<div class="cssmenu-item-list">
+					<div class="cssmenu-item">
+						<a target="" href="#cssmenu-example">link 2.1.1</a>
+						<div class="cssmenu-item-list">
+							<div class="cssmenu-item">
+								<a target="" href="#cssmenu-example">link 2.1.1.1</a>
+							</div>
+						</div>
+					</div>
+					<div class="cssmenu-item">
+						<a target="" href="#cssmenu-example">link 2.1.2</a>
+						<div class="cssmenu-item-list">
+							<div class="cssmenu-item">
+								<a target="" href="#cssmenu-example">link 2.1.2.1</a>
+							</div>
+						</div>
+					</div>
+					<div class="cssmenu-item">
+						<a target="" href="#cssmenu-example">link 2.1.3</a>
+					</div>
+				</div>
+			</div>
+			<div class="cssmenu-item">
+				<a target="" href="#cssmenu-example">link 2.2</a>
+				<div class="cssmenu-item-list">
+					<div class="cssmenu-item">
+						<a target="" href="#cssmenu-example">link 2.2.1</a>
+					</div>
+				</div>
+			</div>
+			<div class="cssmenu-item">
+				<a target="" href="#cssmenu-example">link 2.3</a>
+			</div>
+		</div>
+	</div>
+	<div class="cssmenu-item">
+		<a target="" href="#cssmenu-example">link 3 (no subcategories)</a>
+	</div>
+</div>
 	</pre>
 </ul>

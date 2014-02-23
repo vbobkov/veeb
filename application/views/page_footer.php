@@ -4,6 +4,12 @@
 </html>
 
 <script type="text/javascript">
+	var regex_gt = new RegExp(">", "g");
+	var regex_lt = new RegExp("<", "g");
+	function replace_gtlt(html) {
+		return html.replace(regex_gt, "&gt;").replace(regex_lt, "&lt;");
+	};
+
 	function selectText(text) {
 		var doc = document;
 		// var text = doc.getElementById(element);
@@ -25,8 +31,6 @@
 
 
 	$(document).ready(function() {
-		prettyPrint();
-
 		$(document).delegate('*', 'click touchstart', function(event) {
 			var menu = $(this).closest('.cssmenu-item');
 			var submenu = menu.find('>.cssmenu-item-list');
@@ -60,8 +64,15 @@
 		$('#container pre').each(function(event) {
 			$(this).attr('title', 'click to select/unselect all');
 		});
+
 		$('.title1').each(function(event) {
 			$(this).prepend('<div class="title1-upper-border"></div>');
 		});
+
+		$('.replace-gtlt').each(function(event) {
+			$(this).html(replace_gtlt($(this).html()));
+		});
+
+		prettyPrint();
 	});
 </script>

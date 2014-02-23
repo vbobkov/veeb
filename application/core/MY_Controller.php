@@ -104,6 +104,11 @@ class MY_Controller extends CI_Controller {
 				$css_files[] = '/assets/js/addons/google-code-prettify/sunburst.css';
 			}
 
+			$page_specific_css = 'assets/css/' . $url . '.css';
+			if(file_exists($page_specific_css)) {
+				$css_files[] = '/' . $page_specific_css;
+			}
+
 			if(file_exists('assets/css/veeb.min.js')) {
 				$js_files[] = '/assets/js/veeb.min.js';
 			}

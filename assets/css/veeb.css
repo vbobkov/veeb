@@ -10,6 +10,12 @@ body {
 	padding: 0em;
 }
 
+pre {
+	tab-size: 4;
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+}
+
 /* menu */
 .menu-item {
 	display: inline-block;
