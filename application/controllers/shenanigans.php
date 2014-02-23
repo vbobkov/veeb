@@ -17,6 +17,10 @@ class Shenanigans extends MY_Controller {
 		$this->render('datatables');
 	}
 
+	public function datatables_template_generator() {
+		$this->render('datatables_template_generator');
+	}
+
 	public function nested_cssmenu() {
 		$this->render('nested_cssmenu');
 	}

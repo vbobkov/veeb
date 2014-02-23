@@ -20,24 +20,13 @@ class MY_Controller extends CI_Controller {
 			'target' => '',
 			'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1),
 			'subcats' => array(
-				'DataTables.js stuff' => array(
+				'DataTables (JQuery plugin)' => array(
 					'url' => '#header',
 					'target' => '',
 					'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1),
 					'subcats' => array(
-						'this is' => array(
-							// 'url' => '/shenanigans/datatables/template_generator',
-							'url' => '#header',
-							'target' => '',
-							'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1)
-						),
-						'still under' => array(
-							'url' => '#header',
-							'target' => '',
-							'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1)
-						),
-						'construction' => array(
-							'url' => '#header',
+						'config/template generator' => array(
+							'url' => '/shenanigans/datatables_template_generator',
 							'target' => '',
 							'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1)
 						)
