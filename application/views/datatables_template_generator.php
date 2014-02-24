@@ -90,7 +90,7 @@
 ["Engine", "Browser", "Platform", "Version", "Grade"]</textarea>
 
 					<label class="toggle dataSource-json-url-label">JSON URL:</label>
-					<input class="dataSource-json-url" type="text" value="/assets/uploads/datatables_json_example.txt">
+					<input class="dataSource-json-url" type="text" value="/assets/examples/datatables_json_example.txt">
 
 					<label class="toggle dataSource-url-label">URL:</label>
 					<input class="dataSource-url" type="text" value="/shenanigans/datatables_example_serverside">
