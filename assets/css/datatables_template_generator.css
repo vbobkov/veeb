@@ -74,10 +74,6 @@
 .dataSource-headers {
 	resize: none;
 	width: 100%;
-
-	tab-size: 4;
-	-moz-tab-size: 4;
-	-o-tab-size: 4;
 }
 
 .dataSource-array {
