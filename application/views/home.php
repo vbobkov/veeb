@@ -7,6 +7,15 @@
 			And by that I mean using the least lines of code and resources (CPU/RAM/hard drive space/bandwidth/etc) while utilizing just CSS and plain HTML.
 			As a bonus, it includes instructions on <a target="_blank" href="/shenanigans/nested_cssmenu_mobile">how to make it mobile-friendly</a>.
 		</li>
+		<li><b>2014-02-23:</b>
+			The <a target="_blank" href="/shenanigans/datatables_template_generator">dataTables.js template generator</a> is up.
+			<br />
+			I have just a few basic options/flags up right now (data source, pagination, etc), because <a target="_blank" href="http://datatables.net/ref"> the full list of options</a> for this awesome plugin is ridiculously long.
+			<br />
+			Eventually, I hope to have have most (if not all) of the possible flags/options up. *cue insane laugh*
+			<br />
+			My motivation behind this one is mostly convenience and saving time; as with any really extensive plugin, it can be a real pain to get all the formatting right during each initialization/setup. Therefore, this particular page is going to be a long-term project, not just for others', but also for my own convenience.
+		</li>
 	</ul>
 	<ul class="column-center">
 		I am VeeB and this is my personal website.

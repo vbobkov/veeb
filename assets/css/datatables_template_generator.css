@@ -1,16 +1,17 @@
 #gen-wrapper {
+	margin: 1em;
+	padding: 1em;
 }
 
 #example-config,
 #example-code {
 	display: inline-block;
 	vertical-align: top;
-	width: 45%;
+	width: 48%;
 }
 
 #example-config {
-	margin: 1em;
-	padding: 1em;
+	overflow: auto;
 }
 
 #example-code pre {
@@ -20,17 +21,78 @@
 #example-config #example-style {
 	height: 10em;
 	resize: none;
-	width: 40em;
+	width: 90%;
+}
+
+#example-config input[type="submit"] {
+	margin-left: 4em;
 }
 
 #example-wrapper {
 	background-color: rgb(255,255,255);
-	border: 1px solid black;
-	display: inline-block;
+	border: 1px solid rgb(0,0,0);
+	display: none;
 	margin: 0em 1em 1em 1em;
+	overflow: auto;
 	padding: 1em;
 
 	-webkit-border-radius: 1em;
 	-moz-border-radius: 1em;
 	border-radius: 1em;
+}
+
+#preview-title {
+	display: none;
+}
+
+.example-config-section {
+	border: 1px solid rgb(0,0,0);
+	display: none;
+	margin-bottom: 1em;
+	padding: 1em;
+
+	-webkit-border-radius: 0.5em 0.5em 0em 0em;
+	-moz-border-radius: 0.5em 0.5em 0em 0em;
+	border-radius: 0.5em 0.5em 0em 0em;
+}
+
+.aLengthMenu:disabled {
+	background-color: rgb(224,224,224);
+}
+
+.dataSource-array,
+.dataSource-headers,
+.dataSource-json-url,
+.dataSource-url,
+.dataSource-dom,
+.dataSource-wrapper label.toggle {
+	display: none;
+}
+
+.dataSource-array,
+.dataSource-dom,
+.dataSource-headers {
+	resize: none;
+	width: 100%;
+
+	tab-size: 4;
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+}
+
+.dataSource-array {
+	height: 10em;
+}
+
+.dataSource-dom {
+	height: 10em;
+}
+
+.dataSource-headers {
+	height: 3em;
+}
+
+.dataSource-json-url,
+.dataSource-url {
+	width: 100%;
 }

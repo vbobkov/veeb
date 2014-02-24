@@ -6,7 +6,7 @@
 <script type="text/javascript">
 	var regex_gt = new RegExp(">", "g");
 	var regex_lt = new RegExp("<", "g");
-	function replace_gtlt(html) {
+	function replaceGTLT(html) {
 		return html.replace(regex_gt, "&gt;").replace(regex_lt, "&lt;");
 	};
 
@@ -26,7 +26,7 @@
 			selection.removeAllRanges();
 			selection.addRange(range);
 		}
-	}
+	};
 
 
 
@@ -70,7 +70,7 @@
 		});
 
 		$('.replace-gtlt').each(function(event) {
-			$(this).html(replace_gtlt($(this).html()));
+			$(this).html(replaceGTLT($(this).html()));
 		});
 
 		prettyPrint();

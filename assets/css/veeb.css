@@ -60,12 +60,11 @@ pre {
 }
 
 .menu-item-list .menu-item {
-	background: rgb(224,224,224);
 	border-bottom: 1px solid rgba(128,128,128,1);
 }
 
 .menu .menu-item:hover {
-	background: rgb(192,192,192);
+	background-color: rgb(192,192,192);
 	color: rgb(0,255,0);
 }
 
@@ -91,14 +90,10 @@ pre {
 }
 
 .menu-item-list {
-	background: rgb(255,255,255);
-	border: 0.25em ridge rgb(192,192,192);
-	border-top: none;
+	background-color: rgb(224,224,224);
+	border: 0.125em ridge rgb(192,192,192);
 	margin-left: 4em;
-
-	-webkit-border-radius: 0em 0em 0.5em 0.5em;
-	-moz-border-radius: 0em 0em 0.5em 0.5em;
-	border-radius: 0em 0em 0.5em 0.5em;
+	margin-top: -0.25em;
 }
 
 .t3h-logo {
@@ -759,6 +754,7 @@ pre {
 
 #container .column-right li {
 	margin: 0em;
+	padding-bottom: 1em;
 }
 
 .title1 {
@@ -783,13 +779,47 @@ pre {
 	border-radius: 0em 0em 0.5em 0.5em;
 }
 
-.title2 {
-	background-color: rgba(192,192,255,0.5);
+.title2,
+.title3 {
 	border: 1px solid rgb(0,0,0);
-	margin-left: 2em;
 	display: inline-block;
+	margin-left: 2em;
+	padding: 0em 4em 0em 4em;
 
 	-webkit-border-radius: 0.5em 0.5em 0em 0em;
 	-moz-border-radius: 0.5em 0.5em 0em 0em;
 	border-radius: 0.5em 0.5em 0em 0em;
+}
+
+.title2 {
+	background-color: rgba(192,192,255,0.5);
+}
+
+.title3 {
+	background-color: rgba(192,255,192,0.5);
+}
+
+.title4 {
+	background-color: rgba(192,255,192,0.5);
+	border: 1px solid rgb(0,0,0);
+	cursor: pointer;
+	display: inline-block;
+	padding: 0em 2em 0em 2em;
+	margin-left: 4em;
+
+	-webkit-border-radius: 0.5em 0.5em 0em 0em;
+	-moz-border-radius: 0.5em 0.5em 0em 0em;
+	border-radius: 0.5em 0.5em 0em 0em;
+}
+
+.title4_off:after {
+	content: "\25B2";
+}
+
+.title4_on:after {
+	content: "\25BC";
+}
+
+.title4:hover {
+	background-color: rgba(64,192,64,0.5);
 }
