@@ -17,6 +17,10 @@ class Shenanigans extends MY_Controller {
 		$this->render('datatables');
 	}
 
+	public function foodship9() {
+		$this->render('foodship9');
+	}
+
 	public function datatables_template_generator() {
 		$this->render('datatables_template_generator');
 	}

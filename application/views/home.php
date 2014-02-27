@@ -16,6 +16,9 @@
 			<br />
 			My motivation behind this one is mostly convenience and saving time; as with any really extensive plugin, it can be a real pain to get all the formatting right during each initialization/setup. Therefore, this particular page is going to be a long-term project, not just for others', but also for my own convenience.
 		</li>
+		<li><b>2014-02-26:</b>
+			Added <a target="_blank" href="/shenanigans/foodship9">a little demo</a> that showcases a few of the game dynamics (animations/player controls/special effects/physics/etc) that are possible with just Javascript and CSS.
+		</li>
 	</ul>
 	<ul class="column-center">
 		I am VeeB and this is my personal website.
@@ -31,8 +34,6 @@
 		The premise behind this is that, for more complex images, if they can be done programmatically via pure HTML/CSS/Javascript, their programmed versions will almost always be significantly less in size than whatever image format they were in to begin with.
 		This is because image formats inherently try to account for each and every single pixel inside the image, while HTML/CSS/Javascript can generalize collections of pixels into much more encompassing rulesets.
 		<br /><br />
-		Anyway, that's it for my intro for now.
-		My next update will be a DataTables.js code generator with all the options as a nice switchboard, kind of like a <a target="_blank" href="http://www.colorzilla.com/gradient-editor/">Colorzilla</a>, but for <a target="_blank" href="https://datatables.net/">DataTables.js</a>.
-		After that, I'll get more tutorials going and what not.
+		Of course, <a target="_blank" href="/shenanigans/foodship9">sometimes images are unavoidable</a>, but even then one can easily minimize the space they take up and when they are loaded.
 	</ul>
 </ul>

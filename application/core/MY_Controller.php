@@ -20,7 +20,7 @@ class MY_Controller extends CI_Controller {
 			'target' => '',
 			'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1),
 			'subcats' => array(
-				'DataTables JS' => array(
+				'dataTables JS' => array(
 					'url' => '#header',
 					'target' => '',
 					'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1),
@@ -37,8 +37,13 @@ class MY_Controller extends CI_Controller {
 					// 'target' => '',
 					// 'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1)
 				// ),
-				'nested dropdown menu<br />(using only HTML/CSS)' => array(
+				'nested dropdown menu<br />(HTML/CSS only)' => array(
 					'url' => '/shenanigans/nested_cssmenu',
+					'target' => '',
+					'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1)
+				),
+				'2d game engine (CSS/JS only)' => array(
+					'url' => '/shenanigans/foodship9',
 					'target' => '',
 					'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1)
 				)
