@@ -17,10 +17,6 @@ class Shenanigans extends MY_Controller {
 		$this->render('datatables');
 	}
 
-	public function foodship9() {
-		$this->render('foodship9');
-	}
-
 	public function datatables_template_generator() {
 		$this->render('datatables_template_generator');
 	}
@@ -30,12 +26,20 @@ class Shenanigans extends MY_Controller {
 		// echo $example;
 	}
 
+	public function foodship9() {
+		$this->render('foodship9');
+	}
+
 	public function nested_cssmenu() {
 		$this->render('nested_cssmenu');
 	}
 
 	public function nested_cssmenu_mobile() {
 		$this->render('nested_cssmenu_mobile');
+	}
+
+	public function yuggoth() {
+		$this->render('yuggoth');
 	}
 }
 

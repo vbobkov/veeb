@@ -29,6 +29,11 @@ class MY_Controller extends CI_Controller {
 							'url' => '/shenanigans/datatables_template_generator',
 							'target' => '',
 							'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1)
+						),
+						'Yuggoth - Large Data Sets R US' => array(
+							'url' => '/shenanigans/yuggoth',
+							'target' => '',
+							'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1)
 						)
 					)
 				),

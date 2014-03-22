@@ -19,6 +19,9 @@
 		<li><b>2014-02-26:</b>
 			Added <a target="_blank" href="/shenanigans/foodship9">a little demo</a> that showcases a few of the game dynamics (animations/player controls/special effects/physics/etc) that are possible with just Javascript and CSS.
 		</li>
+		<li><b>2014-03-21:</b>
+			One of my most re-usable and complex Javascript/JQuery plugins is now up for download. <a target="_blank" href="/shenanigans/datatables/yuggoth">Yuggoth</a>
+		</li>
 	</ul>
 	<ul class="column-center">
 		I am VeeB and this is my personal website.
