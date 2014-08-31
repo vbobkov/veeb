@@ -124,7 +124,7 @@ class MY_Controller extends CI_Controller {
 			}
 			else {
 				$js_files[] = '/assets/js/addons/jquery-1.10.2.min.js';
-				// $js_files[] = '/assets/js/addons/json2.min.js';
+				$js_files[] = '/assets/js/addons/json2.min.js';
 				$js_files[] = '/assets/js/addons/jquery.dataTables.min.js';
 				$js_files[] = '/assets/js/addons/google-code-prettify/prettify.js';
 			}

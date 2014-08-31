@@ -824,3 +824,151 @@ textarea {
 .title4:hover {
 	background-color: rgba(64,192,64,0.5);
 }
+
+
+
+.veeb-widget {
+	-webkit-border-radius: 0.25em;
+	-moz-border-radius: 0.25em;
+	border-radius: 0.25em;
+}
+
+.veeb-widget {
+	border: 1px solid rgb(0,0,0);
+	font-family: "Courier New", Courier, monospace;
+	letter-spacing: -0.0625em;
+}
+
+.veeb-widget {
+	margin: 0.5em;
+	padding: 0.5em;
+}
+
+.veeb-widget .subcategory {
+	cursor: pointer;
+	margin-left: 1em;
+}
+
+.veeb-widget .header {
+	font-weight: bold;
+	margin-bottom: 0.25em;
+}
+
+.veeb-widget .big-header {
+	font-size: 150%;
+	text-align: left;
+}
+
+.veeb-widget .medium-header,
+.veeb-widget .small-header {
+	text-align: center;
+}
+
+.veeb-widget .medium-header {
+	font-size: 110%;
+}
+
+.veeb-table-wrapper .header .progress,
+.veeb-table-wrapper .header .info {
+	margin-left: 1em;
+}
+
+.veeb-table-wrapper table {
+	border-collapse: collapse;
+	font-size: 100%;
+	margin-bottom: 1.25em;
+}
+
+.veeb-table-wrapper .ui-resizable {
+	border: 4px ridge rgb(160,160,160);
+	display: block;
+	margin: 0em 0.5em 0em 0.5em;
+	min-height: 5em;
+	min-width: 20em;
+	height: 30em;
+	width: 78em;
+	overflow: auto;
+}
+
+.veeb-table-wrapper table select {
+	margin: 0em;
+	padding: 0em;
+}
+
+.veeb-table-wrapper table th,
+.veeb-table-wrapper table td {
+	border: 1px solid rgb(0,0,0);
+}
+
+.veeb-table-wrapper table td {
+	cursor: text;
+	min-width: 5em;
+	overflow: hidden;
+	text-align: right;
+	white-space: nowrap;
+}
+
+.veeb-table-wrapper table tbody .limited-width {
+	min-width: 10em;
+	max-width: 10em;
+	text-align: center;
+}
+
+.veeb-table-wrapper table thead .limited-width-short {
+	min-width: 2em;
+	max-width: 2em;
+	overflow: hidden;
+	text-align: center;
+}
+
+.veeb-table-wrapper table tbody .limited-width-short {
+	min-width: 2em;
+	max-width: 2em;
+	text-align: center;
+}
+
+.veeb-table-wrapper table tbody .non-numeric {
+	text-align: left;
+}
+
+.veeb-table-wrapper table tbody .link {
+	text-align: center;
+}
+
+.veeb-table-wrapper table tbody tr td:first-child {
+	cursor: pointer;
+}
+
+.veeb-table-wrapper table td button[name="save"] {
+	width: 100%;
+}
+
+.veeb-table-wrapper table td input,
+.veeb-table-wrapper table td textarea {
+	border: none;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 100%;
+	font-weight: bold;
+	letter-spacing: -0.0625em;
+	margin:0em;
+	outline: 1px solid rgb(255,0,0);
+	padding:0em;
+	text-align: inherit;
+	z-index: 10;
+}
+
+.veeb-table-wrapper table td input[type="checkbox"] {
+	margin-right: 0.5em;
+	outline: none;
+}
+
+.veeb-table-wrapper table th,
+.header {
+	text-transform: capitalize;
+}
+
+.veeb-table-wrapper table th {
+	cursor: pointer;
+	font-weight: bold;
+	padding: 0em 0.25em 0em 0.25em;
+}

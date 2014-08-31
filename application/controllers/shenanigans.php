@@ -39,7 +39,24 @@ class Shenanigans extends MY_Controller {
 	}
 
 	public function yuggoth() {
-		$this->render('yuggoth');
+		print_r(glob('assets/js/commands/yuggoth/*.js'));
+		$this->render(
+			'yuggoth',
+			array(
+				'includes' =>
+					$this->filepathsToHTML(array(
+						'/assets/js/yugTable.js',
+						'/assets/js/addons/highcharts/highcharts.js',
+						'/assets/js/addons/highcharts/exporting.js',
+						'/assets/js/addons/highcharts/export-csv.js',
+						'/assets/js/commands/yuggoth/checkall.js',
+						'/assets/js/commands/yuggoth/filter_all.js',
+						'/assets/js/commands/yuggoth/filter_invert.js',
+						'/assets/js/commands/yuggoth/filter_none.js',
+						'/assets/js/commands/yuggoth/uncheckall.js'
+					), '<script type="text/javascript" src="', '"></script>')
+			)
+		);
 	}
 }
 
