@@ -651,7 +651,11 @@ $.fn.yugTable = function(data) {
 			'change focusout keydown'
 		);
 		$(document).undelegate(self.container_selector + ' table:not(' + self.container_selector + ' .dataTables_wrapper .dataTables_wrapper table) tbody td button[name="save"]', 'click');
-		$(document).undelegate(scroll_area, 'mouseenter');
+		$(document).undelegate(scroll_area, 'mouseenter', function(event) {
+			if(!$(document.activeElement).is('select') && $(scroll_area).find('input[type!="checkbox"], textarea').length < 1) {
+				$(scroll_area).focus();
+			}
+		});
 
 
 
@@ -1084,8 +1088,22 @@ $.fn.yugTable = function(data) {
 				if([9,13,27,38,40].indexOf(event.which) != -1) {
 					var next_column = [];
 					if(event.which == 13) { // user pressed enter
-						$(this).focusout();
-						return false;
+						var allow_line_breaks = false;
+						if(typeof self.settings.colSettings.allowLineBreaks === 'object') {
+							$.each(self.settings.colSettings.allowLineBreaks, function(idx, cell_class) {
+								if(table_cell.hasClass(cell_class)) {
+									allow_line_breaks = true;
+									return false;
+								}
+							});
+						}
+						if(allow_line_breaks) {
+							return true;
+						}
+						else {
+							$(this).focusout();
+							return false;
+						}
 					}
 					else if(event.which == 27) { // user pressed escape
 						event.preventDefault();

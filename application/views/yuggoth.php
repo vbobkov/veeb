@@ -168,6 +168,10 @@ Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/lic
 
 
 	$(document).ready(function() {
+		random_image_urls = [
+			'https://www.google.com/images/srpr/logo11w.png',
+			'https://www.google.com/logos/pacman10-hp.2.png'
+		];
 		table1 = {};
 		table2 = {};
 		table1_data = [];
@@ -178,7 +182,8 @@ Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/lic
 				'id': i,
 				'table2_id': Math.floor(Math.random() * 50) + 1,
 				'value1': Math.floor(Math.random() * 1337),
-				'value2': Math.floor(Math.random() * 1337)
+				'value2': Math.floor(Math.random() * 1337),
+				'image1': random_image_urls[Math.floor(Math.random() * random_image_urls.length)]
 			};
 		}
 
@@ -187,7 +192,8 @@ Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/lic
 				'id': i,
 				'table1_id': Math.floor(Math.random() * 100) + 1,
 				'value3': Math.floor(Math.random() * 1337),
-				'value4': Math.floor(Math.random() * 1337)
+				'value4': Math.floor(Math.random() * 1337),
+				'image2': random_image_urls[Math.floor(Math.random() * random_image_urls.length)]
 			};
 		}
 
@@ -199,24 +205,24 @@ Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/lic
 		});
 
 		$('#table1').yugTable({
-			data: table2_data,
+			data: table1_data,
 
-			resizable: '.table1-table-wrapper',
-			resizableHeightPadding: 48,
-			resizableWidthPadding: 40,
+			// resizable: '.table1-table-wrapper',
+			// resizableHeightPadding: 48,
+			// resizableWidthPadding: 40,
 
 			colSettings: {
 				classes: {
 					'non-numeric': [
+					],
+					'image-preview': [
+						'image1'
 					]
 				},
 
 				colShowHide: {
 					container: '.regular-commands'
 				},
-
-				columns: [
-				],
 
 				commands: [
 					command_filter_all,
@@ -230,6 +236,10 @@ Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/lic
 				],
 
 				editable: [
+					'table2_id',
+					'value1',
+					'value2',
+					'image1'
 				],
 
 				// not added to cells that have a save button (button[name="save"])
@@ -273,7 +283,7 @@ Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/lic
 				sPaginationType: 'full_numbers'
 			},
 
-			// dataSource: {},
+			dataSource: {},
 
 			searchFilter: {
 				fnCallback: function(dtSelector, search, yTable) {
@@ -284,17 +294,19 @@ Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/lic
 			}
 		});
 
-		/*
 		$('#table2').yugTable({
 			data: table2_data,
 
-			resizable: '.table2-table-wrapper',
-			resizableHeightPadding: 48,
-			resizableWidthPadding: 40,
+			// resizable: '.table2-table-wrapper',
+			// resizableHeightPadding: 48,
+			// resizableWidthPadding: 40,
 
 			colSettings: {
 				classes: {
 					'non-numeric': [
+					],
+					'image-preview': [
+						'image1'
 					]
 				},
 
@@ -314,6 +326,10 @@ Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/lic
 				],
 
 				editable: [
+					'table2_id',
+					'value1',
+					'value2',
+					'image1'
 				],
 
 				// not added to cells that have a save button (button[name="save"])
@@ -333,6 +349,8 @@ Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/lic
 
 			colMutators: [
 			],
+
+			dataSource: {},
 
 			dataTableSettings: {
 				// aaSorting: [[5, 'desc']],
@@ -367,7 +385,6 @@ Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/lic
 				searchButton: 'Search'
 			}
 		});
-		*/
 
 
 
@@ -662,11 +679,17 @@ Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/lic
 
 
 		$(document).delegate('.widget-toggler button[widget_id="table_totals"]', 'click', function(event) {
-			renderStatsChart(totals, 'table1', '-totals', 'Table1 Totals');
-			renderStatsChart(totals, 'table2', '-totals', 'Table2 Totals');
+			// renderStatsChart(totals, 'table1', '-totals', 'Table1 Totals');
+			// renderStatsChart(totals, 'table2', '-totals', 'Table2 Totals');
 		});
 
 
+
+		$(document).undelegate('.widget-toggler button', 'click');
+		$(document).delegate('.widget-toggler button', 'click', function(event) {
+			$('.togglable-widget').css('display', 'none');
+			$('#' + $(this).attr('widget_id')).css('display', 'block');
+		});
 
 		$(document).undelegate('.veeb-subtable .close-button', 'click');
 		$(document).delegate('.veeb-subtable .close-button', 'click', function(event) {

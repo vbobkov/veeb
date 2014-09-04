@@ -45,6 +45,7 @@ class Shenanigans extends MY_Controller {
 			array(
 				'includes' =>
 					$this->filepathsToHTML(array(
+						'/assets/js/addons/jquery-ui-1.10.4.custom.min.js',
 						'/assets/js/yugTable.js',
 						'/assets/js/addons/highcharts/highcharts.js',
 						'/assets/js/addons/highcharts/exporting.js',

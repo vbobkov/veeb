@@ -972,3 +972,45 @@ textarea {
 	font-weight: bold;
 	padding: 0em 0.25em 0em 0.25em;
 }
+
+
+
+/*
+* image previewer
+*/
+
+#YugImagePreviewer {
+	background: rgba(32,224,32,0.5);
+	color: rgb(0,0,0);
+	display: block;
+	padding: 1em;
+	position: absolute;
+	visibility: hidden;
+
+	-webkit-border-radius: 1em;
+	-moz-border-radius: 1em;
+	border-radius: 1em;
+}
+
+#YugImagePreviewer .linker {
+	border-left: 2.5em solid rgba(32,224,32,0.5);
+	border-bottom: 2.5em solid rgba(0,0,0,0);
+	position: absolute;
+	height: 0em;
+	margin: 1em 0em 0em 1em;
+	width: 0em;
+}
+
+#YugImagePreviewer img {
+	max-height: 20em;
+	max-width: 20em;
+	min-height: 5em;
+	min-width: 5em;
+}
+
+#YugImagePreviewer .previewer-error {
+	background: rgb(32,224,32);
+	color: rgb(255,0,0);
+	display: none;
+	font-weight: bold;
+}
