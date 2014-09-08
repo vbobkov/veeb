@@ -208,8 +208,9 @@ Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/lic
 			data: table1_data,
 
 			// resizable: '.table1-table-wrapper',
-			// resizableHeightPadding: 48,
-			// resizableWidthPadding: 40,
+			resizableHeightPadding: 48,
+			resizableWidthPadding: 40,
+			stickyHeaders: true,
 
 			colSettings: {
 				classes: {
@@ -298,8 +299,9 @@ Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/lic
 			data: table2_data,
 
 			// resizable: '.table2-table-wrapper',
-			// resizableHeightPadding: 48,
-			// resizableWidthPadding: 40,
+			resizableHeightPadding: 48,
+			resizableWidthPadding: 40,
+			stickyHeaders: true,
 
 			colSettings: {
 				classes: {

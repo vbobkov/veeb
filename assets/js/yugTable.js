@@ -363,6 +363,42 @@ $.fn.yugTable = function(data) {
 		}
 	};
 
+	self.fnRealignStickyHeaders = function() {
+		var header_cells = $(self.table_selector + ' thead tr:first-child th');
+		var first_row_cells = $(self.table_selector + ' tbody tr:first-child td');
+		if(first_row_cells.length > 0) {
+			for(var i = 0; i < header_cells.length; i++) {
+				$(first_row_cells[i]).css('padding-right', 0);
+				$(header_cells[i]).css('padding-right', 0);
+				if($(first_row_cells[i]).outerWidth() - $(header_cells[i]).outerWidth() > 0) {
+					$(header_cells[i]).css('padding-right', $(first_row_cells[i]).outerWidth() - $(header_cells[i]).outerWidth());
+					// $.parseIntOr($(header_cells[i]).css('padding-left'), 0);
+					// $.parseIntOr($(first_row_cells[i]).css('border-left-width'), 0);
+				}
+				else {
+					var padding_direction;
+					switch($(first_row_cells[i]).css('text-align')) {
+						case 'left':
+							padding_direction = 'padding-right';
+							break;
+						case 'center':
+							padding_direction = 'padding-left';
+							break;
+						case 'right':
+							padding_direction = 'padding-left';
+							break;
+						default:
+							padding_direction = 'padding-right';
+							break;
+					}
+					$(first_row_cells[i]).css(padding_direction, $(header_cells[i]).outerWidth() - $(first_row_cells[i]).outerWidth());
+					// $.parseIntOr($(header_cells[i]).css('border-left-width'), 0)
+					// $('html > head').append('<style>' + self.table_selector + ' tbody tr:first-child th:nth-child(' + (i + 1) + ') { padding-right: ' + $(header_cells[i]).innerWidth() - $(first_row_cells[i]).innerWidth() + '}' + '</style>');
+				}
+			}
+		}
+	};
+
 	self.fnRemoveAllStatusColors = function(jquery_element) {
 		// removing all classes that start with 'status-'
 		jquery_element.removeClass(function (index, class_name) {
@@ -590,47 +626,50 @@ $.fn.yugTable = function(data) {
 				self.settings.dataTableSettings.aoColumns = self.defaults.headers(data, _columns, _classes, _idCheckbox);
 				self.settings.dataTableSettings.aaData = self.defaults.entries(data, _columns);
 			}
-		}
-		self.settings.dataTableSettings.fnDrawCallback = function(oSettings) {
-			var bVis_display;
-			$.each(oSettings.aoColumns, function(column_index, column) {
-				if(column.isVisible) {
-					bVis_display = '';
-				}
-				else {
-					bVis_display = 'none';
-				}
-				self.fnColumnSetVis(column_index, column.isVisible);
-			});
-		};
 
-		if(typeof self.settings.colSettings === 'undefined') {
-			self.settings.colSettings = {};
-		}
-		if(typeof self.settings.colSettings.editable === 'undefined') {
-			self.settings.colSettings.editable = [];
-		}
-		if(typeof self.settings.colSettings.uneditable === 'undefined') {
-			self.settings.colSettings.uneditable = [];
-		}
-		if(typeof self.settings.colSettings.unsaveable === 'undefined') {
-			self.settings.colSettings.unsaveable = [];
-		}
+			if(typeof self.settings.colSettings === 'undefined') {
+				self.settings.colSettings = {};
+			}
+			if(typeof self.settings.colSettings.editable === 'undefined') {
+				self.settings.colSettings.editable = [];
+			}
+			if(typeof self.settings.colSettings.uneditable === 'undefined') {
+				self.settings.colSettings.uneditable = [];
+			}
+			if(typeof self.settings.colSettings.unsaveable === 'undefined') {
+				self.settings.colSettings.unsaveable = [];
+			}
 
-		if(typeof self.settings.colSettings.idCheckbox === 'undefined') {
-			// self.settings.colSettings.idCheckboxHTML = '';
-			self.settings.colSettings.idCheckbox = '';
-		}
-		else {
-			// self.settings.colSettings.idCheckboxHTML = '<input type="checkbox">';
-			self.settings.dataTableSettings.fnRowCallback = function(nRow, aData, iDisplayIndex) {
-				// $(nRow).removeClass('highlighted-row');
-				var id_cell = $(nRow).find('td:first-child');
-				if(id_cell.find('input[type="checkbox"]').length < 1 && id_cell.find('button[name="save"]').length < 1) {
-				// if(id_cell.find('button[name="save"]').length < 1) {
-					// id_cell.find('input[type="checkbox"]').remove(); // reset checkboxes for anything that's being reloaded via paging, etc.
-					id_cell.prepend(self.settings.colSettings.idCheckbox);
-				}
+			if(typeof self.settings.colSettings.idCheckbox === 'undefined') {
+				// self.settings.colSettings.idCheckboxHTML = '';
+				self.settings.colSettings.idCheckbox = '';
+			}
+			else {
+				// self.settings.colSettings.idCheckboxHTML = '<input type="checkbox">';
+				self.settings.dataTableSettings.fnRowCallback = function(nRow, aData, iDisplayIndex) {
+					// $(nRow).removeClass('highlighted-row');
+					var id_cell = $(nRow).find('td:first-child');
+					if(id_cell.find('input[type="checkbox"]').length < 1 && id_cell.find('button[name="save"]').length < 1) {
+					// if(id_cell.find('button[name="save"]').length < 1) {
+						// id_cell.find('input[type="checkbox"]').remove(); // reset checkboxes for anything that's being reloaded via paging, etc.
+						id_cell.prepend(self.settings.colSettings.idCheckbox);
+					}
+
+					oSettings = $(self.table_selector).dataTable().fnSettings();
+					if(oSettings != null) {
+						if(iDisplayIndex + 1 >= oSettings._iDisplayLength) {
+							$.each(oSettings.aoColumns, function(column_index, column) {
+								self.fnColumnSetVis(column_index, column.isVisible);
+							});
+						}
+					}
+				};
+			}
+
+			self.settings.dataTableSettings.fnDrawCallback = function(oSettings) {
+				$.each(oSettings.aoColumns, function(column_index, column) {
+					self.fnColumnSetVis(column_index, column.isVisible);
+				});
 			};
 		}
 
@@ -651,9 +690,9 @@ $.fn.yugTable = function(data) {
 			'change focusout keydown'
 		);
 		$(document).undelegate(self.container_selector + ' table:not(' + self.container_selector + ' .dataTables_wrapper .dataTables_wrapper table) tbody td button[name="save"]', 'click');
-		$(document).undelegate(scroll_area, 'mouseenter', function(event) {
-			if(!$(document.activeElement).is('select') && $(scroll_area).find('input[type!="checkbox"], textarea').length < 1) {
-				$(scroll_area).focus();
+		$(document).undelegate(self.scrollArea, 'mouseenter', function(event) {
+			if(!$(document.activeElement).is('select') && $(self.scrollArea).find('input[type!="checkbox"], textarea').length < 1) {
+				$(self.scrollArea).focus();
 			}
 		});
 
@@ -842,51 +881,82 @@ $.fn.yugTable = function(data) {
 
 
 
-		var scroll_area = 'html, body';
-		if(typeof self.settings.draggable !== 'undefined') {
-			$(self.settings.draggable).draggable({ handles: 'n,e,s,w,se' });
-			scroll_area = self.settings.draggable;
+		self.scrollArea = 'html, body';
+		if(typeof self.settings.resizableHeightPadding !== 'undefined') {
+			var height_padding = self.settings.resizableHeightPadding;
 		}
-		if(typeof self.settings.resizable !== 'undefined') {
-			var table_container = $(self.settings.resizable);
-			table_container.resizable({ handles: 'n,e,s,w,se' });
+		else {
+			var height_padding = 0;
+		}
+		if(typeof self.settings.resizableWidthPadding !== 'undefined') {
+			var width_padding = self.settings.resizableWidthPadding;
+		}
+		else {
+			var width_padding = 0;
+		}
 
-			if(typeof self.settings.resizableHeightPadding !== 'undefined') {
-				var height_padding = self.settings.resizableHeightPadding;
-			}
-			else {
-				var height_padding = 0;
-			}
-			if(typeof self.settings.resizableWidthPadding !== 'undefined') {
-				var width_padding = self.settings.resizableWidthPadding;
-			}
-			else {
-				var width_padding = 0;
-			}
+		if(self.settings.stickyHeaders) {
+			self.scrollArea = self.table_selector + ' tbody';
+			// $(self.scrollArea).resizable({ handles: 'n,e,s,w,se' });
+			var thead = $(self.table_selector + ' thead');
+			var tbody = $(self.table_selector + ' tbody');
+			thead.css('display', 'block');
+			thead.css('overflow', 'hidden');
+			thead.css('position', 'relative');
+			thead.css('width', document.documentElement.clientWidth - $(self.table_selector).offset().left - width_padding - $.getScrollBarWidth());
+			tbody.css('display', 'block');
+			tbody.css('overflow', 'scroll');
+			tbody.css('position', 'relative');
+			tbody.css('height', document.documentElement.clientHeight - thead.outerHeight() - $(self.table_selector).offset().top - height_padding);
+			tbody.css('width', document.documentElement.clientWidth - $(self.table_selector).offset().left - width_padding);
 
-			table_container.css('height', document.documentElement.clientHeight - table_container.offset().top - height_padding);
-			table_container.css('width', document.documentElement.clientWidth - table_container.offset().left - width_padding);
-
-			var icon = $(self.settings.resizable + ' .ui-resizable-se');
-			var icon_outline_width = parseInt(icon.css('outline-width'));
-			icon.css('left', table_container.scrollLeft() + table_container.innerWidth() - (icon.outerWidth() * 2));
-			icon.css('top', table_container.scrollTop() + table_container.innerHeight() - (icon.outerHeight() * 2));
-			icon.attr('title', 'click and drag to resize');
-
-			table_container.on('resize scroll', function(event) {
-				icon.css('left', $(this).scrollLeft() + $(this).innerWidth() - (icon.outerWidth() * 2));
-				icon.css('top', $(this).scrollTop() + $(this).innerHeight() - (icon.outerHeight() * 2));
+			// var header_cells = thead.find('tr:first-child th');
+			// var first_row_cells = tbody.find('tr:first-child td');
+			$(self.table_selector).bind('draw.dt', function(event) {
+				self.fnRealignStickyHeaders();
 			});
 
-			scroll_area = self.settings.resizable;
+			$(self.table_selector + ' tbody').scroll(function(event) {
+				thead.scrollLeft(tbody.scrollLeft());
+			});
+
+			self.fnRealignStickyHeaders();
+		}
+		else {
+			if(typeof self.settings.draggable !== 'undefined') {
+				$(self.settings.draggable).draggable({ handles: 'n,e,s,w,se' });
+				self.scrollArea = self.settings.draggable;
+			}
+			if(typeof self.settings.resizable !== 'undefined') {
+				var table_container = $(self.settings.resizable);
+				table_container.resizable({ handles: 'n,e,s,w,se' });
+
+				table_container.css('height', document.documentElement.clientHeight - table_container.offset().top - height_padding);
+				table_container.css('width', document.documentElement.clientWidth - table_container.offset().left - width_padding);
+
+				var icon = $(self.settings.resizable + ' .ui-resizable-se');
+				var icon_outline_width = parseInt(icon.css('outline-width'));
+				icon.css('left', table_container.scrollLeft() + table_container.innerWidth() - (icon.outerWidth() * 2));
+				icon.css('top', table_container.scrollTop() + table_container.innerHeight() - (icon.outerHeight() * 2));
+				icon.attr('title', 'click and drag to resize');
+
+				table_container.on('resize scroll', function(event) {
+					icon.css('left', $(this).scrollLeft() + $(this).innerWidth() - (icon.outerWidth() * 2));
+					icon.css('top', $(this).scrollTop() + $(this).innerHeight() - (icon.outerHeight() * 2));
+				});
+
+				self.scrollArea = self.settings.resizable;
+			}
 		}
 
-		if(scroll_area != 'html, body') {
-			$(scroll_area).attr("tabindex", -1).focus();
+
+
+		if(self.scrollArea != 'html, body') {
+			$(self.scrollArea).attr("tabindex", -1).focus();
 			// $('html, body').scrollTop(0);
-			$(document).delegate(scroll_area, 'mouseenter', function(event) {
-				if(!$(document.activeElement).is('select') && $(scroll_area).find('input[type!="checkbox"], textarea').length < 1) {
-					$(scroll_area).focus();
+			$(document).delegate(self.scrollArea, 'mouseenter', function(event) {
+				if(!$(document.activeElement).is('select') && $(self.scrollArea).find('input[type!="checkbox"], textarea').length < 1) {
+					$(self.scrollArea).focus();
 				}
 			});
 		}
@@ -922,7 +992,7 @@ $.fn.yugTable = function(data) {
 					self.settings.searchFilter.fnCallback(sel_tbl, '');
 					// input_field.val(search_text);
 				}
-				$(scroll_area).scrollTop(0);
+				$(self.scrollArea).scrollTop(0);
 			});
 
 			// clicking the search button or pressing enter will filter the table
@@ -990,7 +1060,9 @@ $.fn.yugTable = function(data) {
 						var cell_coords = table_cell.position();
 						table_cell.html(
 							// '<textarea changed="0" style="resize:both;position:absolute;height:5em;width:20em;left:' + (cell_coords.left - (table_cell.innerWidth() * 0.1)) + 'px;top:' + (cell_coords.top - table_cell.innerHeight()) + 'px">'
-							'<textarea changed="0" style="resize:both;position:absolute;height:5em;width:20em">'
+							// '<textarea changed="0" style="resize:both;position:absolute;height:5em;width:20em;left:' + (cell_coords.left + (table_cell.innerWidth() * 0.1)) + 'px;top:' + (cell_coords.top + (table_cell.innerHeight() * 0.5)) + 'px">'
+							// '<textarea changed="0" style="resize:both;position:absolute;height:5em;width:20em">'
+							'<textarea changed="0">'
 							+ table_cell.text() + '</textarea>');
 					}
 
@@ -1134,25 +1206,14 @@ $.fn.yugTable = function(data) {
 						$(this).focusout(); // save this cell's changes
 						next_column.click(); // start editing the nearby cell
 
-						// does this table have a draggable and/or resizable wrapper?
-						if(typeof self.settings.draggable !== 'undefined') {
-							var scroll_area = $(self.settings.draggable);
-							var scrollTop = next_column.offset().top + scroll_area.scrollTop() - (document.documentElement.clientHeight * 0.5);
-							var scrollLeft = next_column.offset().left + scroll_area.scrollLeft() - (document.documentElement.clientWidth * 0.5);
-						}
-						else if(typeof self.settings.resizable !== 'undefined') {
-							var scroll_area = $(self.settings.resizable);
-							var scrollTop = next_column.offset().top + scroll_area.scrollTop() - (document.documentElement.clientHeight * 0.5);
-							var scrollLeft = next_column.offset().left + scroll_area.scrollLeft() - (document.documentElement.clientWidth * 0.5);
-						}
-						else {
-							var scroll_area = $('html, body');
-							var scrollTop = next_column.offset().top - (document.documentElement.clientHeight * 0.5);
-							var scrollLeft = next_column.offset().left - (document.documentElement.clientWidth * 0.5);
-						}
-
 						// center the browser window around the nearby cell
-						scroll_area.animate({
+						// var scrollTop = next_column.offset().top + $(self.scrollArea).scrollTop() - (document.documentElement.clientHeight * 0.5);
+						// var scrollLeft = next_column.offset().left + $(self.scrollArea).scrollLeft() - (document.documentElement.clientWidth * 0.5);
+						// var scrollTop = next_column.offset().top + $(self.scrollArea).scrollTop() - (document.documentElement.clientHeight * 0.5) - (next_column.outerHeight() * 4);
+						// var scrollLeft = next_column.offset().left + $(self.scrollArea).scrollLeft() - (document.documentElement.clientWidth * 0.5) - next_column.outerWidth();
+						var scrollTop = next_column.offset().top + $(self.scrollArea).scrollTop() - $(self.scrollArea).offset().top - (next_column.outerHeight() * 5);
+						var scrollLeft = next_column.offset().left + $(self.scrollArea).scrollLeft() - $(self.scrollArea).offset().left - (next_column.outerWidth() * 5);
+						$(self.scrollArea).animate({
 							scrollTop: scrollTop,
 							scrollLeft: scrollLeft
 						}, 100);
@@ -1499,6 +1560,33 @@ $.checkForNullString = function(str, nullstr) {
 		return nullstr;
 	}
 }
+
+// http://stackoverflow.com/questions/986937/how-can-i-get-the-browsers-scrollbar-sizes
+$.getScrollBarWidth = function() {
+	var inner = document.createElement('p');
+	inner.style.width = "100%";
+	inner.style.height = "200px";
+
+	var outer = document.createElement('div');
+	outer.style.position = "absolute";
+	outer.style.top = "0px";
+	outer.style.left = "0px";
+	outer.style.visibility = "hidden";
+	outer.style.width = "200px";
+	outer.style.height = "150px";
+	outer.style.overflow = "hidden";
+	outer.appendChild (inner);
+
+	document.body.appendChild (outer);
+	var w1 = inner.offsetWidth;
+	outer.style.overflow = 'scroll';
+	var w2 = inner.offsetWidth;
+	if (w1 == w2) w2 = outer.clientWidth;
+
+	document.body.removeChild (outer);
+
+	return (w1 - w2);
+};
 
 $.numberWithCommas = function(x) {
     var parts = x.toString().split(".");
