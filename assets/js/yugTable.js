@@ -367,6 +367,15 @@ $.fn.yugTable = function(data) {
 		var header_cells = $(self.table_selector + ' thead tr:first-child th');
 		var first_row_cells = $(self.table_selector + ' tbody tr:first-child td');
 		if(first_row_cells.length > 0) {
+			var table_not_visible = false;
+			if($(self.container_selector).css('display') == 'none') {
+				table_not_visible = true;
+			}
+			if(table_not_visible) {
+				// TO DO: find a better way to handle this
+				// $(self.container_selector).css('display', '');
+				$(self.container_selector).css('display', 'block');
+			}
 			for(var i = 0; i < header_cells.length; i++) {
 				$(first_row_cells[i]).css('padding-right', 0);
 				$(header_cells[i]).css('padding-right', 0);
@@ -395,6 +404,9 @@ $.fn.yugTable = function(data) {
 					// $.parseIntOr($(header_cells[i]).css('border-left-width'), 0)
 					// $('html > head').append('<style>' + self.table_selector + ' tbody tr:first-child th:nth-child(' + (i + 1) + ') { padding-right: ' + $(header_cells[i]).innerWidth() - $(first_row_cells[i]).innerWidth() + '}' + '</style>');
 				}
+			}
+			if(table_not_visible) {
+				$(self.container_selector).css('display', 'none');
 			}
 		}
 	};

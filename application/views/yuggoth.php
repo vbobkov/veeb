@@ -41,7 +41,7 @@ Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/lic
 		</div>
 	</div>
 </div>
-<div class="togglable-widget" id="table2" style="display:none">
+<div class="togglable-widget" id="table2">
 	<div class="veeb-widget">
 		<div class="veeb-table-wrapper">
 			<div class="header big-header"><u>Table 2</u></div>
@@ -352,7 +352,29 @@ Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/lic
 			colMutators: [
 			],
 
-			dataSource: {},
+			dataSource: {
+				entries: function(data, columns) {
+					table_data = [];
+					entry_column_indexes = {};
+					$.each(columns, function(idx, column) {
+						entry_column_indexes[column] = idx;
+					});
+
+					$.each(data, function(index, entry) {
+						entry_array = [];
+						$.each(entry, function(column_name, column_value) {
+							if(column_value != null && column_name.split('_json').length > 1) {
+								column_value = JSON.parse(column_value);
+							}
+							// entry_array.push(column_value);
+							entry_array[entry_column_indexes[column_name]] = column_value;
+						});
+						table_data[index] = entry_array;
+					});
+					$('#table2').css('display', 'none');
+					return table_data;
+				}
+			},
 
 			dataTableSettings: {
 				// aaSorting: [[5, 'desc']],
