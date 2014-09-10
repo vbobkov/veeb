@@ -16,14 +16,17 @@ Essentially, Yuggoth extends the functionality of <a target="_blank" href="http:
 The original purpose I created Yuggoth for was scalable rendering and editing of large data sets, with the ability to fully customize how and when a website can mold said data sets.
 With the right parameters, Yuggoth is capable of loading ridiculously large data sets without relying on server-side processing (paginating/returning only a few rows from the database at a time).
 <br /><br />
-Yes, Yuggoth can load the entire huge table of whatever it is.  The highest I've tried so far has been roughly 500MB of JSON data, gzipped, sent over the wire, unzipped and parsed into Yuggoth.
-Yuggoth is only limited by browser/system memory. Although, I'd imagine loading over 1GB of JSON data would make any browser unresponsive for a rather long time. :)
+Yes, Yuggoth can load the entire huge table of whatever it is.
+The highest I've tried so far has been roughly 500MB of JSON data, gzipped, sent over the wire, unzipped and parsed into Yuggoth, equating to 300,000+ table rows with 50+ columns of data.
+Yuggoth is only limited by browser/system memory, but at (obscenely) large data sets, there is an noticeable browser freeze as it loads the data into memory. Also, download speed can start to become an issue, if the client doesn't already have the data on their hard drive.  Luckily, the built-in progress bar at least informs the user of what's going on.
+<br /><br />
+I'd imagine loading over 1GB of JSON data would make any browser unresponsive for a rather long time, but if the user has the RAM for it, Yuggoth will eventually load it, after which it's smooth sailing.
 <br /><br />
 The latest source code for Yuggoth can be found <a target="_blank" href="/assets/js/yugTable.js">here.</a>
 <br />
 Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/licenses/gpl.html">GPL v3 license</a>.
 <br /><br />
-Example of Yuggoth in action:
+Sample of Yuggoth in action (2 tables - 50,000 and 25,000 entries):
 </ul>
 
 
@@ -74,103 +77,6 @@ Example of Yuggoth in action:
 </div>
 
 <script type="text/javascript">
-	function renderStatsChart(data_source, platform, widget_suffix, title) {
-		if(typeof title === 'undefined') {
-			title = platform;
-		}
-
-		var charts = [];
-		$.each(data_source[platform], function(year, months) {
-			var new_plot = {
-				name: year,
-				data: $.map(months, function(value, index) { return $.parseFloatOr(value.toFixed(2), 0); })
-			};
-			if($.parseIntOr(year) + 2 < (new Date()).getFullYear()) {
-				// new_plot['visible'] = false;
-			}
-			charts.push(new_plot);
-		});
-
-		$('#sales_statistics .' + platform + widget_suffix + ' .chart').highcharts({
-			title: {
-				text: title,
-				x: 0
-			},
-			subtitle: {
-				text: '(' + platform + ')',
-				x: 0
-			},
-			xAxis: {
-				title: {
-					text: 'Date',
-					style: {
-						fontSize: '16px',
-						fontFamily: 'Verdana, sans-serif'
-					}
-				},
-				labels: {
-					// enabled: false
-					rotation: -45,
-					// maxStaggerLines: 7,
-					// staggerLines: 7,
-					// step: 7
-					style: {
-						fontSize: '14px',
-						fontFamily: 'Verdana, sans-serif'
-					}
-				},
-				categories: months
-			},
-			yAxis: {
-				title: {
-					text: 'sales',
-					style: {
-						fontSize: '16px',
-						fontFamily: 'Verdana, sans-serif'
-					}
-				},
-				labels: {
-					// enabled: false,
-					formatter: function () {
-						return '$' + $.numberWithCommas(this.value);
-					},
-					rotation: 0,
-					style: {
-						fontSize: '14px',
-						fontFamily: 'Verdana, sans-serif'
-					}
-				},
-				plotLines: [{
-					value: 0,
-					width: 1,
-					// color: '#808080'
-					// color: '#660000'
-				}],
-				endOnTick:false,
-				min: 0
-			},
-			tooltip: {
-				// formatter: function() {
-					// return 'Date: <b>'+ this.x + '</b><br />Violations: <b>'+ this.y +'</b>';
-				// },
-				valueSuffix: ''
-			},
-			legend: {
-				layout: 'vertical',
-				align: 'right',
-				// verticalAlign: 'top',
-				borderWidth: 0,
-				// floating: true,
-				// top: 20
-			},
-			series: charts
-		});
-	}
-
-
-
-
-
 	$(document).ready(function() {
 		random_image_urls = [
 			'https://www.google.com/images/srpr/logo11w.png',
@@ -185,25 +91,28 @@ Example of Yuggoth in action:
 		table2 = {};
 		table1_data = [];
 		table2_data = [];
+		table1_size = 50000;
+		table2_size = 25000;
+		max_rand = 1337455;
 
-		for(var i = 1; i < 101; i++) {
+		for(var i = 1; i < table1_size + 1; i++) {
 			table1[i] = {
 				'id': i,
-				'table2_id': Math.floor(Math.random() * 50) + 1,
-				'value1': Math.floor(Math.random() * 1337),
-				'value2': Math.floor(Math.random() * 1337),
+				'table2_id': Math.floor(Math.random() * table2_size) + 1,
+				'value1': Math.floor(Math.random() * max_rand),
+				'value2': Math.floor(Math.random() * max_rand),
 				'image1': random_image_urls[Math.floor(Math.random() * random_image_urls.length)],
 				'image2': random_image_urls[Math.floor(Math.random() * random_image_urls.length)],
 				'image3': random_image_urls[Math.floor(Math.random() * random_image_urls.length)]
 			};
 		}
 
-		for(var i = 1; i < 51; i++) {
+		for(var i = 1; i < table2_size + 1; i++) {
 			table2[i] = {
 				'id': i,
-				'table1_id': Math.floor(Math.random() * 100) + 1,
-				'value3': Math.floor(Math.random() * 1337),
-				'value4': Math.floor(Math.random() * 1337)
+				'table1_id': Math.floor(Math.random() * table1_size) + 1,
+				'value3': Math.floor(Math.random() * max_rand),
+				'value4': Math.floor(Math.random() * max_rand)
 			};
 		}
 
