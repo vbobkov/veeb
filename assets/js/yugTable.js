@@ -426,8 +426,15 @@ $.fn.yugTable = function(data) {
 					That, and/or they arbitrarily resize element sizes right as an element's padding is dynamically changed.
 					FOR. NO. APPARENT. REASON.
 					*/
-					while(padding_target.outerWidth() < padding_basis.outerWidth()) {
-						padding_target.css('padding-right', $.parseFloatOr(padding_target.css('padding-right'), 0) + padding_basis.outerWidth() - padding_target.outerWidth());
+					if(padding_target.outerWidth() > 0 && padding_basis.outerWidth() > 0) {
+						var j = 0;
+						while(padding_target.outerWidth() < padding_basis.outerWidth()) {
+							j++;
+							padding_target.css('padding-right', $.parseFloatOr(padding_target.css('padding-right'), 0) + padding_basis.outerWidth() - padding_target.outerWidth());
+							if(j > 1000) {
+								break;
+							}
+						}
 					}
 				}
 			}

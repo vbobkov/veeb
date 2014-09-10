@@ -1,6 +1,6 @@
 mutator_multiply_v3v4 =
 {
-    name: 'multiply_v1v2',
+    name: 'multiply_v3v4',
     leftHandSide: ['value3', 'value4'],
     rightHandSide: 'multiply1',
     mutate: function(cells) {
