@@ -40,21 +40,25 @@ class Shenanigans extends MY_Controller {
 
 	public function yuggoth() {
 		print_r(glob('assets/js/commands/yuggoth/*.js'));
+		$this->render('yuggoth');
+	}
+
+	public function yuggoth_sample() {
 		$this->render(
-			'yuggoth',
+			'yuggoth_sample',
 			array(
 				'includes' =>
 					$this->filepathsToHTML(array(
 						'/assets/js/addons/jquery-ui-1.10.4.custom.min.js',
 						'/assets/js/yugTable.js',
-						'/assets/js/addons/highcharts/highcharts.js',
-						'/assets/js/addons/highcharts/exporting.js',
-						'/assets/js/addons/highcharts/export-csv.js',
-						'/assets/js/commands/yuggoth/checkall.js',
-						'/assets/js/commands/yuggoth/filter_all.js',
-						'/assets/js/commands/yuggoth/filter_invert.js',
-						'/assets/js/commands/yuggoth/filter_none.js',
-						'/assets/js/commands/yuggoth/uncheckall.js'
+						// '/assets/js/addons/highcharts/highcharts.js',
+						// '/assets/js/addons/highcharts/exporting.js',
+						// '/assets/js/addons/highcharts/export-csv.js',
+						'/assets/js/commands/yuggoth_sample/checkall.js',
+						'/assets/js/commands/yuggoth_sample/filter_all.js',
+						'/assets/js/commands/yuggoth_sample/filter_invert.js',
+						'/assets/js/commands/yuggoth_sample/filter_none.js',
+						'/assets/js/commands/yuggoth_sample/uncheckall.js'
 					), '<script type="text/javascript" src="', '"></script>')
 			)
 		);
