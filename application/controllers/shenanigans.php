@@ -58,7 +58,9 @@ class Shenanigans extends MY_Controller {
 						'/assets/js/commands/yuggoth_sample/filter_all.js',
 						'/assets/js/commands/yuggoth_sample/filter_invert.js',
 						'/assets/js/commands/yuggoth_sample/filter_none.js',
-						'/assets/js/commands/yuggoth_sample/uncheckall.js'
+						'/assets/js/commands/yuggoth_sample/uncheckall.js',
+						'/assets/js/mutators/yuggoth_sample/mutator_sum_v1v2.js',
+						'/assets/js/mutators/yuggoth_sample/mutator_multiply_v3v4.js',
 					), '<script type="text/javascript" src="', '"></script>')
 			)
 		);

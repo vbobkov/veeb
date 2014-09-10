@@ -25,5 +25,5 @@ The latest source code for Yuggoth can be found <a target="_blank" href="/assets
 <br />
 Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/licenses/gpl.html">GPL v3 license</a>.
 <br /><br />
-<a target="_blank" href="/shenanigans/yuggoth_sample">Sample of Yuggoth in action.</a> (Barebone, no server-side stuff. 2 tables, 50,000 and 25,000 entries, no database saving, redis or mutators.)
+<a target="_blank" href="/shenanigans/yuggoth_sample">Sample of Yuggoth in action.</a> (Barebone, no server-side stuff. 2 tables, 50,000 and 25,000 entries, no database saving or redis.)
 </ul>

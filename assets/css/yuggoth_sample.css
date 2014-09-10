@@ -433,6 +433,11 @@
 	text-align: center;
 }
 
+.veeb-table-wrapper table tbody .limited-width2 {
+	min-width: 8em;
+	max-width: 8em;
+}
+
 .veeb-table-wrapper table thead .limited-width-short {
 	min-width: 2em;
 	max-width: 2em;

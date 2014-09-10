@@ -1,5 +1,6 @@
 <?php echo $includes; ?>
 
+<br /><br />
 <div class="widget-toggler">
 	<button widget_id="table1">Table 1</button>
 	<button widget_id="table2">Table 2</button>
@@ -105,6 +106,11 @@
 						'image2',
 						'image3'
 					],
+					'limited-width2': [
+						'value1',
+						'value2',
+						'sum1'
+					],
 					'non-numeric': [
 					],
 					'image-preview': [
@@ -117,6 +123,17 @@
 				colShowHide: {
 					container: '.regular-commands'
 				},
+
+				columns: [
+					'id',
+					'table2_id',
+					'value1',
+					'value2',
+					'sum1',
+					'image1',
+					'image2',
+					'image3'
+				],
 
 				commands: [
 					command_filter_all,
@@ -132,6 +149,7 @@
 				editable: [
 					'value1',
 					'value2',
+					'sum1',
 					'image1',
 					'image2',
 					'image3'
@@ -153,6 +171,7 @@
 			},
 
 			colMutators: [
+				mutator_sum_v1v2
 			],
 
 			dataTableSettings: {
@@ -179,20 +198,31 @@
 			},
 
 			dataSource: {
-				entries: function(data, columns) {
-					table_data = [];
-					entry_column_indexes = {};
+				entries: function(data, columns, classes, idCheckbox) {
+					var column_value;
+					var entry_column_indexes = {};
+					var table_data = [];
 					$.each(columns, function(idx, column) {
 						entry_column_indexes[column] = idx;
 					});
 
 					$.each(data, function(index, entry) {
 						entry_array = [];
-						$.each(entry, function(column_name, column_value) {
+						$.each(columns, function(idx, column_name) {
+							if(typeof entry[column_name] !== 'undefined') {
+								column_value = entry[column_name];
+							}
+							else {
+								column_value = '';
+							}
 							if(column_name == 'table2_id') {
 								column_value = '<span class="link">' + column_value + '</span>';
 							}
-							entry_array.push(column_value);
+							else if(column_name == 'sum1') {
+								column_value =  entry['value1'] + entry['value2'];
+							}
+							// entry_array.push(column_value);
+							entry_array[entry_column_indexes[column_name]] = column_value;
 						});
 						table_data[index] = entry_array;
 					});
@@ -219,6 +249,11 @@
 
 			colSettings: {
 				classes: {
+					'limited-width2': [
+						'value3',
+						'value4',
+						'multiply1'
+					],
 					'non-numeric': [
 					]
 				},
@@ -226,6 +261,14 @@
 				colShowHide: {
 					container: '.regular-commands'
 				},
+
+				columns: [
+					'id',
+					'table1_id',
+					'value3',
+					'value4',
+					'multiply1'
+				],
 
 				commands: [
 					command_filter_all,
@@ -240,7 +283,8 @@
 
 				editable: [
 					'value3',
-					'value4'
+					'value4',
+					'multiply1'
 				],
 
 				// not added to cells that have a save button (button[name="save"])
@@ -259,6 +303,7 @@
 			},
 
 			colMutators: [
+				mutator_multiply_v3v4
 			],
 
 			dataTableSettings: {
@@ -285,20 +330,31 @@
 			},
 
 			dataSource: {
-				entries: function(data, columns) {
-					table_data = [];
-					entry_column_indexes = {};
+				entries: function(data, columns, classes, idCheckbox) {
+					var column_value;
+					var entry_column_indexes = {};
+					var table_data = [];
 					$.each(columns, function(idx, column) {
 						entry_column_indexes[column] = idx;
 					});
 
 					$.each(data, function(index, entry) {
 						entry_array = [];
-						$.each(entry, function(column_name, column_value) {
+						$.each(columns, function(idx, column_name) {
+							if(typeof entry[column_name] !== 'undefined') {
+								column_value = entry[column_name];
+							}
+							else {
+								column_value = '';
+							}
 							if(column_name == 'table1_id') {
 								column_value = '<span class="link">' + column_value + '</span>';
 							}
-							entry_array.push(column_value);
+							else if(column_name == 'multiply1') {
+								column_value =  entry['value3'] * entry['value4'];
+							}
+							// entry_array.push(column_value);
+							entry_array[entry_column_indexes[column_name]] = column_value;
 						});
 						table_data[index] = entry_array;
 					});
