@@ -30,7 +30,7 @@ class MY_Controller extends CI_Controller {
 							'target' => '',
 							'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1)
 						),
-						'Yuggoth - Large Data Sets R US' => array(
+						'Yuggoth - Large Data Sets In Browser Memory' => array(
 							'url' => '/shenanigans/yuggoth',
 							'target' => '',
 							'allowed_users' => array(DEV => 1, MEMBER => 1, GUEST => 1)

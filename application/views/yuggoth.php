@@ -1,3 +1,5 @@
+<?php echo $includes; ?>
+
 <ul>
 To properly use this plugin, extensive knowledge of <a target="_blank" href="http://datatables.net/">dataTables</a> is highly recommended.
 <br />
@@ -17,14 +19,16 @@ With the right parameters, Yuggoth is capable of loading ridiculously large data
 Yes, Yuggoth can load the entire huge table of whatever it is.  The highest I've tried so far has been roughly 500MB of JSON data, gzipped, sent over the wire, unzipped and parsed into Yuggoth.
 Yuggoth is only limited by browser/system memory. Although, I'd imagine loading over 1GB of JSON data would make any browser unresponsive for a rather long time. :)
 <br /><br />
-The source code for Yuggoth can be found <a target="_blank" href="/assets/js/yugTable.js">here.</a>
+The latest source code for Yuggoth can be found <a target="_blank" href="/assets/js/yugTable.js">here.</a>
 <br />
 Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/licenses/gpl.html">GPL v3 license</a>.
 <br /><br />
+Example of Yuggoth in action:
 </ul>
 
 
-<?php echo $includes; ?>
+
+
 
 <div class="widget-toggler">
 	<button widget_id="table1">Table 1</button>
@@ -170,7 +174,12 @@ Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/lic
 	$(document).ready(function() {
 		random_image_urls = [
 			'https://www.google.com/images/srpr/logo11w.png',
-			'https://www.google.com/logos/pacman10-hp.2.png'
+			'https://www.google.com/logos/pacman10-hp.2.png',
+			'https://www.google.com/logos/2012/startrek2012-hp.jpg',
+			'https://lh5.ggpht.com/jeMAdKHTkOFqBhfwKwjNXW9-5tBkfcZ3gcHgE4af37of3jOBUOlCldsSsPwMEjuwQZG07ljMEINAEr-07jvfbwP9gzbnTCIumTMvaWzB',
+			'https://lh3.ggpht.com/y-0L2mwB9XkfwnF1MgXKkiw3W1GoezWMzGuqo1JLhd1Lj2rhaVH-f6a4k3bM7q4p-DwGB5plepghFt4lSmXA-8jh_vYAKorqLLYmvRCxzA',
+			'https://lh6.ggpht.com/ET-OVQZYfdE0JDzi5c52NjaHR0i3cLDS8Njg7uh4MfZtR2cNEPRB4QMCx_WU-D0usol_b_xmJTWfISm1Vwx_ClFqnAEuFXbBsGKKKenJ',
+			'https://lh6.ggpht.com/C0uv3dbUIjDwR3azyWYOeKy56Ej9yMbabQmNXgiJtMECnZ3lxZj06WpFwLVrGETE-zi8EMZnm0zS5SGdXuhFQhMdBHUhB5VGE-cjMag'
 		];
 		table1 = {};
 		table2 = {};
@@ -183,7 +192,9 @@ Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/lic
 				'table2_id': Math.floor(Math.random() * 50) + 1,
 				'value1': Math.floor(Math.random() * 1337),
 				'value2': Math.floor(Math.random() * 1337),
-				'image1': random_image_urls[Math.floor(Math.random() * random_image_urls.length)]
+				'image1': random_image_urls[Math.floor(Math.random() * random_image_urls.length)],
+				'image2': random_image_urls[Math.floor(Math.random() * random_image_urls.length)],
+				'image3': random_image_urls[Math.floor(Math.random() * random_image_urls.length)]
 			};
 		}
 
@@ -192,8 +203,7 @@ Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/lic
 				'id': i,
 				'table1_id': Math.floor(Math.random() * 100) + 1,
 				'value3': Math.floor(Math.random() * 1337),
-				'value4': Math.floor(Math.random() * 1337),
-				'image2': random_image_urls[Math.floor(Math.random() * random_image_urls.length)]
+				'value4': Math.floor(Math.random() * 1337)
 			};
 		}
 
@@ -214,10 +224,17 @@ Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/lic
 
 			colSettings: {
 				classes: {
+					'limited-width': [
+						'image1',
+						'image2',
+						'image3'
+					],
 					'non-numeric': [
 					],
 					'image-preview': [
-						'image1'
+						'image1',
+						'image2',
+						'image3'
 					]
 				},
 
@@ -237,10 +254,11 @@ Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/lic
 				],
 
 				editable: [
-					'table2_id',
 					'value1',
 					'value2',
-					'image1'
+					'image1',
+					'image2',
+					'image3'
 				],
 
 				// not added to cells that have a save button (button[name="save"])
@@ -284,7 +302,27 @@ Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/lic
 				sPaginationType: 'full_numbers'
 			},
 
-			dataSource: {},
+			dataSource: {
+				entries: function(data, columns) {
+					table_data = [];
+					entry_column_indexes = {};
+					$.each(columns, function(idx, column) {
+						entry_column_indexes[column] = idx;
+					});
+
+					$.each(data, function(index, entry) {
+						entry_array = [];
+						$.each(entry, function(column_name, column_value) {
+							if(column_name == 'table2_id') {
+								column_value = '<span class="link">' + column_value + '</span>';
+							}
+							entry_array.push(column_value);
+						});
+						table_data[index] = entry_array;
+					});
+					return table_data;
+				}
+			},
 
 			searchFilter: {
 				fnCallback: function(dtSelector, search, yTable) {
@@ -306,9 +344,6 @@ Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/lic
 			colSettings: {
 				classes: {
 					'non-numeric': [
-					],
-					'image-preview': [
-						'image1'
 					]
 				},
 
@@ -328,10 +363,8 @@ Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/lic
 				],
 
 				editable: [
-					'table2_id',
-					'value1',
-					'value2',
-					'image1'
+					'value3',
+					'value4'
 				],
 
 				// not added to cells that have a save button (button[name="save"])
@@ -351,30 +384,6 @@ Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/lic
 
 			colMutators: [
 			],
-
-			dataSource: {
-				entries: function(data, columns) {
-					table_data = [];
-					entry_column_indexes = {};
-					$.each(columns, function(idx, column) {
-						entry_column_indexes[column] = idx;
-					});
-
-					$.each(data, function(index, entry) {
-						entry_array = [];
-						$.each(entry, function(column_name, column_value) {
-							if(column_value != null && column_name.split('_json').length > 1) {
-								column_value = JSON.parse(column_value);
-							}
-							// entry_array.push(column_value);
-							entry_array[entry_column_indexes[column_name]] = column_value;
-						});
-						table_data[index] = entry_array;
-					});
-					$('#table2').css('display', 'none');
-					return table_data;
-				}
-			},
 
 			dataTableSettings: {
 				// aaSorting: [[5, 'desc']],
@@ -399,7 +408,27 @@ Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/lic
 				sPaginationType: 'full_numbers'
 			},
 
-			// dataSource: {},
+			dataSource: {
+				entries: function(data, columns) {
+					table_data = [];
+					entry_column_indexes = {};
+					$.each(columns, function(idx, column) {
+						entry_column_indexes[column] = idx;
+					});
+
+					$.each(data, function(index, entry) {
+						entry_array = [];
+						$.each(entry, function(column_name, column_value) {
+							if(column_name == 'table1_id') {
+								column_value = '<span class="link">' + column_value + '</span>';
+							}
+							entry_array.push(column_value);
+						});
+						table_data[index] = entry_array;
+					});
+					return table_data;
+				}
+			},
 
 			searchFilter: {
 				fnCallback: function(dtSelector, search, yTable) {
@@ -409,53 +438,41 @@ Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/lic
 				searchButton: 'Search'
 			}
 		});
+		$('#table2').css('display', 'none');
 
 
 
-		/*
-		$(document).delegate('#table1 .dataTable tbody tr td .order-link', 'click', function(event) {
+		$(document).delegate('#table1 .table1-table-wrapper >.dataTable >tbody >tr >td >.link', 'click', function(event) {
 			event.stopPropagation();
-			var table1_id = $(this).closest('tr').find('td:first').text();
+			var table2_id = $(this).closest('tr').find('td:nth-child(2)').text();
 			$('.table2-items-table').css('display', '');
-			var opt = $('#table1_' + transaction_id);
+			var opt = $('#table2_' + table2_id);
 			if(opt.length < 1) {
-				var table1_items_summary = [];
-				var current_item;
-				if(typeof table1[table1_id] !== 'undefined') {
-					$.each(transaction_items[transaction_id], function(idx, item) {
-						if(typeof table2[item['product_id']] !== 'undefined') {
-							current_item = $.cloneObj(item);
-							current_item['manufacturer'] = table2[item['product_id']]['manufacturer_name'];
-							current_item['model'] = table2[item['product_id']]['model'];
-							table1_items_summary.push(current_item);
-						}
-					});
-				}
-
-				if(table1_items_summary.length < 1) {
-					table1_items_summary.push({
-						'id': '-1',
-						'table1_id': '-1',
-						'value3': 'NO DATA',
-						'value4': 'NO DATA'
-					});
-				}
+				var table2_items_summary = [];
+				table2_items_summary.push({
+					'id': '-1',
+					'table2_id': table2_id,
+					'subvalue1': 'NO DATA',
+					'subvalue2': 'NO DATA',
+					'subvalue3': 'NO DATA'
+				});
 
 				$(this).closest('td').append(
-					'<div class="veeb-subtable transaction-items-table" id="transaction_' + transaction_id + '">\
+					'<div class="veeb-subtable" id="table2_' + table2_id + '">\
 						<span class="linker"></span>\
 						<div class="close-button">X</div>\
 						<table></table>\
 					</div>'
 				);
 
-				opt = $('#transaction_' + transaction_id);
+				opt = $('#table2_' + table2_id);
 				opt.yugTable({
-					data: table1_items_summary,
+					data: table2_items_summary,
 
 					colSettings: {
 						classes: {
-							'non-numeric': [
+							'limited-width': [
+								'image4'
 							]
 						},
 
@@ -475,6 +492,10 @@ Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/lic
 						],
 
 						editable: [
+							'image4',
+							'subvalue1',
+							'subvalue2',
+							'subvalue3'
 						],
 
 						// idCheckbox: '<input type="checkbox">',
@@ -512,34 +533,12 @@ Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/lic
 						oSearchFilter: {
 							bAutoFilter: false,
 						},
-						// sDom: '<"veeb-widget regular-commands"l<>f><><"clear-floats">p<>ir<"transaction-items-table-wrapper"t>',
-						sDom: '<"veeb-widget regular-commands"><><"clear-floats">p<>ir<"transaction-items-table-wrapper"t>',
+						// sDom: '<"veeb-widget regular-commands"l<>f><><"clear-floats">p<>ir<"table2-items-table-wrapper"t>',
+						sDom: '<"veeb-widget regular-commands"><><"clear-floats">p<>ir<"table2-items-table-wrapper"t>',
 						sPaginationType: 'full_numbers'
 					},
 
-					dataSource: {
-						entries: function(data, columns, classes, idCheckbox) {
-							table_data = [];
-							var column_value;
-							$.each(data, function(index, entry) {
-								entry_array = [];
-								$.each(columns, function(idx, column_name) {
-									column_value = entry[column_name];
-									if(typeof column_value !== 'undefined') {
-										if(column_name == 'product_id') {
-											column_value = '<a target="_blank" href="/products?id=' + column_value + '">' + column_value + '</a>';
-										}
-									}
-									else {
-										column_value = '';
-									}
-									entry_array.push(column_value);
-								});
-								table_data[index] = entry_array;
-							});
-							return table_data;
-						}
-					},
+					dataSource: {},
 				});
 				opt.css('display', 'block');
 			}
@@ -553,35 +552,36 @@ Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/lic
 			}
 		});
 
-
-
-		$(document).delegate('#table2 .dataTable tbody tr td .table1-link', 'click', function(event) {
+		$(document).delegate('#table2 .table2-table-wrapper >.dataTable >tbody >tr >td >.link', 'click', function(event) {
 			event.stopPropagation();
-			var product_id = $(this).closest('tr').find('td:first').text();
-			$('.table1-summary-table').css('display', '');
-			if($('#table1_' + product_id).length < 1) {
-				var table1_summary = [];
-				$.each(table2[product_id]['transaction_ids'], function(idx, transaction_id) {
-					table1_summary.push({
-						'transaction_id': transaction_id,
-						'order_id': transaction_order_ids[transaction_id]
-					});
+			var table1_id = $(this).closest('tr').find('td:nth-child(2)').text();
+			$('.table1-items-table').css('display', '');
+			var opt = $('#table1_' + table1_id);
+			if(opt.length < 1) {
+				var table2_items_summary = [];
+				table2_items_summary.push({
+					'id': '-1',
+					'table1_id': table1_id,
+					'image1': table1[table1_id]['image1'],
+					'subvalue4': 'NO DATA'
 				});
 
 				$(this).closest('td').append(
-					'<div class="veeb-subtable table1-summary-table" id="table1_' + product_id + '">\
+					'<div class="veeb-subtable" id="table1_' + table1_id + '">\
 						<span class="linker"></span>\
 						<div class="close-button">X</div>\
 						<table></table>\
 					</div>'
 				);
 
-				$('#table1_' + product_id).yugTable({
-					data: table1_summary,
+				opt = $('#table1_' + table1_id);
+				opt.yugTable({
+					data: table2_items_summary,
 
 					colSettings: {
 						classes: {
-							'non-numeric': [
+							'limited-width': [
+								'image1'
 							]
 						},
 
@@ -592,13 +592,17 @@ Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/lic
 						commands: [
 							command_filter_all,
 							command_filter_none,
-							command_filter_invert
+							command_filter_invert,
+							command_checkall,
+							command_uncheckall
 						],
 
 						alwaysSend: [
 						],
 
 						editable: [
+							'image1',
+							'subvalue4'
 						],
 
 						// idCheckbox: '<input type="checkbox">',
@@ -636,78 +640,24 @@ Yuggoth is open source under the <a target="_blank" href="http://www.gnu.org/lic
 						oSearchFilter: {
 							bAutoFilter: false,
 						},
-						sDom: '<"veeb-widget regular-commands"><><"clear-floats">p<>ir<"table1-summary-table-wrapper"t>',
+						// sDom: '<"veeb-widget regular-commands"l<>f><><"clear-floats">p<>ir<"table1-items-table-wrapper"t>',
+						sDom: '<"veeb-widget regular-commands"><><"clear-floats">p<>ir<"table1-items-table-wrapper"t>',
 						sPaginationType: 'full_numbers'
 					},
 
-					dataSource: {
-						entries: function(data, columns, classes, idCheckbox) {
-							table_data = [];
-							var column_value;
-							$.each(data, function(index, entry) {
-								entry_array = [];
-								$.each(columns, function(idx, column_name) {
-									column_value = entry[column_name];
-									if(typeof column_value !== 'undefined') {
-										if(column_name == 'order_id') {
-											column_value = '<span class="link order-link2">' + column_value + '</span>';
-										}
-									}
-									else {
-										column_value = '';
-									}
-									entry_array.push(column_value);
-								});
-								table_data[index] = entry_array;
-							});
-							return table_data;
-						}
-					},
+					dataSource: {},
 				});
-				$('#table1_' + product_id).css('display', 'block');
+				opt.css('display', 'block');
 			}
 			else {
-				if($('#table1_' + product_id).css('display') == 'block') {
-					$('#table1_' + product_id).css('display', '');
+				if(opt.css('display') == 'block') {
+					opt.css('display', '');
 				}	
 				else {
-					$('#table1_' + product_id).css('display', 'block');
+					opt.css('display', 'block');
 				}
 			}
 		});
-
-
-
-		$(document).delegate('.table1-summary-table .dataTable tbody tr td .order-link2', 'click', function(event) {
-			event.stopPropagation();
-			var order_id = $(this).text();
-			var table1_table_search_box = $('#table1 .dataTables_filter:not(#table1 .dataTable .dataTables_filter)');
-			// $(this).closest('.veeb-subtable').find('.close-button').click();
-			$('.table-toggler button[table_id="table1"]').click();
-			table1_table_search_box.find('input[type="search"]').prop('value', order_id);
-			table1_table_search_box.find('.search').click();
-			$('#table1 .dataTable tbody tr:not(#table1 .dataTable .dataTable tr)').each(function() {
-				if($(this).find('.order-link').text() == order_id) {
-					$(this).click();
-					$(this).find('.order-link').click();
-					// $('.table1-table-wrapper').animate({
-						// scrollTop: $(this).offset().top - 64
-						// scrollTop: $(this).position().top - 64
-					// }, 0);
-					return false;
-				}
-			});
-		});
-		*/
-
-
-
-		$(document).delegate('.widget-toggler button[widget_id="table_totals"]', 'click', function(event) {
-			// renderStatsChart(totals, 'table1', '-totals', 'Table1 Totals');
-			// renderStatsChart(totals, 'table2', '-totals', 'Table2 Totals');
-		});
-
-
 
 		$(document).undelegate('.widget-toggler button', 'click');
 		$(document).delegate('.widget-toggler button', 'click', function(event) {

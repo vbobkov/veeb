@@ -364,48 +364,74 @@ $.fn.yugTable = function(data) {
 	};
 
 	self.fnRealignStickyHeaders = function() {
-		var header_cells = $(self.table_selector + ' thead tr:first-child th');
-		var first_row_cells = $(self.table_selector + ' tbody tr:first-child td');
+		var header_cells = $(self.table_selector + ' >thead >tr:first-child >th');
+		var first_row_cells = $(self.table_selector + ' >tbody >tr:first-child >td');
 		if(first_row_cells.length > 0) {
-			var table_not_visible = false;
+			var container_not_visible = false;
 			if($(self.container_selector).css('display') == 'none') {
-				table_not_visible = true;
-			}
-			if(table_not_visible) {
+				container_not_visible = true;
 				// TO DO: find a better way to handle this
 				// $(self.container_selector).css('display', '');
 				$(self.container_selector).css('display', 'block');
 			}
+
+			var padding_basis;
+			var padding_target;
+			var padding_directions;
 			for(var i = 0; i < header_cells.length; i++) {
-				$(first_row_cells[i]).css('padding-right', 0);
-				$(header_cells[i]).css('padding-right', 0);
+				$(header_cells[i]).css('padding', '');
+				$(first_row_cells[i]).css('padding', '');
+				padding_directions = [];
 				if($(first_row_cells[i]).outerWidth() - $(header_cells[i]).outerWidth() > 0) {
-					$(header_cells[i]).css('padding-right', $(first_row_cells[i]).outerWidth() - $(header_cells[i]).outerWidth());
-					// $.parseIntOr($(header_cells[i]).css('padding-left'), 0);
-					// $.parseIntOr($(first_row_cells[i]).css('border-left-width'), 0);
+					padding_basis = $(first_row_cells[i]);
+					padding_target = $(header_cells[i]);
 				}
 				else {
-					var padding_direction;
-					switch($(first_row_cells[i]).css('text-align')) {
-						case 'left':
-							padding_direction = 'padding-right';
-							break;
-						case 'center':
-							padding_direction = 'padding-left';
-							break;
-						case 'right':
-							padding_direction = 'padding-left';
-							break;
-						default:
-							padding_direction = 'padding-right';
-							break;
+					padding_basis = $(header_cells[i]);
+					padding_target = $(first_row_cells[i]);
+				}
+
+				switch(padding_target.css('text-align')) {
+					case 'left':
+						padding_directions.push('padding-right');
+						break;
+					case 'center':
+						padding_directions.push('padding-left');
+						padding_directions.push('padding-right');
+						break;
+					case 'right':
+						padding_directions.push('padding-left');
+						break;
+					default:
+						padding_directions.push('padding-right');
+						break;
+				}
+
+				if(padding_directions.length > 0) {
+					var current_cell_width = padding_target.outerWidth();
+					var current_cell_initial_padding = {
+						'padding-top': $.parseFloatOr(padding_target.css('padding-top'), 0),
+						'padding-bottom': $.parseFloatOr(padding_target.css('padding-bottom'), 0),
+						'padding-left': $.parseFloatOr(padding_target.css('padding-left'), 0),
+						'padding-right': $.parseFloatOr(padding_target.css('padding-right'), 0)
+					};
+					$.each(padding_directions, function(idx, padding_direction) {
+						padding_target.css(padding_direction, current_cell_initial_padding[padding_direction] + (padding_basis.outerWidth() - current_cell_width) / padding_directions.length);
+						// padding_target.css(padding_direction, (padding_basis.outerWidth() - current_cell_width) / padding_directions.length);
+					});
+					// padding_target.css(padding_directions[padding_directions.length - 1], $.parseFloatOr(padding_target.css(padding_directions[padding_directions.length - 1]), 0) + ((padding_basis.outerWidth() - current_cell_width) % padding_directions.length));
+
+					/*
+					Don't know why this needs to be done, but apparently browsers fail basic arithmetic.
+					That, and/or they arbitrarily resize element sizes right as an element's padding is dynamically changed.
+					FOR. NO. APPARENT. REASON.
+					*/
+					while(padding_target.outerWidth() < padding_basis.outerWidth()) {
+						padding_target.css('padding-right', $.parseFloatOr(padding_target.css('padding-right'), 0) + padding_basis.outerWidth() - padding_target.outerWidth());
 					}
-					$(first_row_cells[i]).css(padding_direction, $(header_cells[i]).outerWidth() - $(first_row_cells[i]).outerWidth());
-					// $.parseIntOr($(header_cells[i]).css('border-left-width'), 0)
-					// $('html > head').append('<style>' + self.table_selector + ' tbody tr:first-child th:nth-child(' + (i + 1) + ') { padding-right: ' + $(header_cells[i]).innerWidth() - $(first_row_cells[i]).innerWidth() + '}' + '</style>');
 				}
 			}
-			if(table_not_visible) {
+			if(container_not_visible) {
 				$(self.container_selector).css('display', 'none');
 			}
 		}
@@ -910,8 +936,8 @@ $.fn.yugTable = function(data) {
 		if(self.settings.stickyHeaders) {
 			self.scrollArea = self.table_selector + ' tbody';
 			// $(self.scrollArea).resizable({ handles: 'n,e,s,w,se' });
-			var thead = $(self.table_selector + ' thead');
-			var tbody = $(self.table_selector + ' tbody');
+			var thead = $(self.table_selector + ' >thead');
+			var tbody = $(self.table_selector + ' >tbody');
 			thead.css('display', 'block');
 			thead.css('overflow', 'hidden');
 			thead.css('position', 'relative');
@@ -922,13 +948,11 @@ $.fn.yugTable = function(data) {
 			tbody.css('height', document.documentElement.clientHeight - thead.outerHeight() - $(self.table_selector).offset().top - height_padding);
 			tbody.css('width', document.documentElement.clientWidth - $(self.table_selector).offset().left - width_padding);
 
-			// var header_cells = thead.find('tr:first-child th');
-			// var first_row_cells = tbody.find('tr:first-child td');
 			$(self.table_selector).bind('draw.dt', function(event) {
 				self.fnRealignStickyHeaders();
 			});
 
-			$(self.table_selector + ' tbody').scroll(function(event) {
+			$(self.table_selector + ' >tbody').scroll(function(event) {
 				thead.scrollLeft(tbody.scrollLeft());
 			});
 
