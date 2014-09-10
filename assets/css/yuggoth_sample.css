@@ -630,3 +630,24 @@
 	top: -3em;
 	width: 0em;
 }
+
+
+
+/*
+* status colors
+*/
+.status-blue {
+	color: rgb(0,0,255);
+}
+
+.status-green {
+	color: rgb(0,255,0);
+}
+
+.status-orange {
+	color: rgb(255,127,0);
+}
+
+.status-red {
+	color: rgb(255,0,0);
+}
