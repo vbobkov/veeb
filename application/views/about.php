@@ -1,6 +1,6 @@
 <ul>
 	<div class="title1">Who Am I And What Do I Do?</div>
-	What is up, I am VeeB. My actual name is Vic Bobkov and I am a webdev & sysadmin (web developer and system administrator).
+	What is up, I am VeeB. My actual name is Victor Bobkov and I am a webdev & sysadmin (web developer and system administrator).
 	<br /><br />
 	I am essentially a software developer, gamer and frequenter of many local restaurants.
 	<br /><br />
