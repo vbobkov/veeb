@@ -29,7 +29,7 @@
 	<ul class="column-center">
 		I am VeeB and this is my personal website.
 		<br /><br />
-		What makes this website unique is that it's <b>completely free of image data</b>.
+		What makes this website unique is that its design is <b>completely free of image data</b>.
 		This includes all conceivable loopholes, such as <a target="_blank" href="http://en.wikipedia.org/wiki/Data_URI_scheme">data URIs</a> and <a target="_blank" href="http://fortawesome.github.io/Font-Awesome/">custom fonts</a>.
 		<br /><br />
 		You're not hallucinating, it's not a trick of the eyes. Well, actually it kinda is.
