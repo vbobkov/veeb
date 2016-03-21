@@ -1,6 +1,9 @@
 <ul>
 	<ul class="column-right">
 		<div class="title1">News</div>
+		<li><b>2016-03-19:</b>
+			Slight revisions to the home/about page, nothing major (yet).  I'm in the process of writing up some sys admin stuff (server architecture, etc.).
+		</li>
 		<li><b>2014-09-10:</b>
 			Updated the Yuggoth page.  Added an <a target="_blank" href="/shenanigans/yuggoth_sample">example</a>.
 		</li>
