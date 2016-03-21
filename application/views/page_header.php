@@ -46,7 +46,7 @@
 	<div id="header">
 		<div class="t3h-logo">
 			<div class="logo1">VeeB's corner</div>
-			<div class="logo2">//web dev shenanigans</div>
+			<div class="logo2">//software shenanigans</div>
 			<div class="black-magic" disabled>
 <pre>
 /* I am 0x5F3759DF.  I am Black Magic. */
