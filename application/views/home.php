@@ -30,9 +30,7 @@
 		</li>
 	</ul>
 	<ul class="column-center">
-		I am VeeB and this is my personal website.
-		<br /><br />
-		What makes this website unique is that its design is <b>completely free of image data</b>.
+		Right-click, "save image as..." not working?  Don't worry, all is as it should be; this site's design is <b>completely free of image data</b>.
 		This includes all conceivable loopholes, such as <a target="_blank" href="http://en.wikipedia.org/wiki/Data_URI_scheme">data URIs</a> and <a target="_blank" href="http://fortawesome.github.io/Font-Awesome/">custom fonts</a>.
 		All of the site's design is done via plain HTML and CSS.
 		<br /><br />
